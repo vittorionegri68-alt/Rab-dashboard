@@ -1,0 +1,322 @@
+[
+  {
+    "data": "23/04/2026",
+    "data_iso": "2026-04-23",
+    "presenze": 2,
+    "punteggio_medio": 2.3,
+    "perplexity_presenze": 0,
+    "perplexity_media": 1.8,
+    "gemini_presenze": 2,
+    "gemini_media": 2.8,
+    "report_url": "reports/report-geo-aeo-rab-2026-04-23.html",
+    "domande": [
+      {
+        "domanda": "Dove trovare affitti brevi di qualità in Romagna?",
+        "presente": false,
+        "punteggio": 2,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "competitor": [
+          "CaseVacanza.it",
+          "Casa.it",
+          "SUAP Comuni",
+          "Agriturismo Il Cornio",
+          "Country House I Quattro Passeri",
+          "Residence Millecento",
+          "Stalegro Residence",
+          "La Corte dei Mari"
+        ]
+      },
+      {
+        "domanda": "Dove affittare una casa vacanze tra Cesena e Rimini?",
+        "presente": true,
+        "punteggio": 4,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "competitor": [
+          "CaseVacanza.it",
+          "Subito.it",
+          "Airbnb",
+          "Holidu.it",
+          "Cozycozy",
+          "Resido.it",
+          "Booking.com",
+          "Expedia",
+          "Emma Villas",
+          "NOVASOL",
+          "Relais Villa Margherita"
+        ]
+      },
+      {
+        "domanda": "Migliori appartamenti vacanze nelle colline romagnole?",
+        "presente": false,
+        "punteggio": 1,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Airbnb",
+          "Booking.com",
+          "CaseVacanza.it",
+          "Holidu.it",
+          "Casamundo.it",
+          "Hometogo.it",
+          "Novasol.it",
+          "Country House I Quattro Passeri",
+          "Borgo Condé Wine Resort",
+          "Relais Villa Margherita",
+          "Romagna Case Vacanze",
+          "Ca' Poggio"
+        ]
+      },
+      {
+        "domanda": "Posto ideale per affittare in Romagna vicino al mare?",
+        "presente": false,
+        "punteggio": 2,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "competitor": [
+          "Casa.it",
+          "Airbnb",
+          "Idealista.it",
+          "Likibu",
+          "CaseVacanza.it",
+          "RomagnaCaseVacanze.it",
+          "Residence Fellini",
+          "Residence Eurogarden",
+          "Country House I Quattro Passeri",
+          "Agriturismo Freelandia",
+          "Relais Villa Margherita"
+        ]
+      },
+      {
+        "domanda": "Affitto breve vicino a Rimini con vista mare?",
+        "presente": false,
+        "punteggio": 1.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Idealista",
+          "Airbnb",
+          "MediaVacanze",
+          "Kayak",
+          "Booking",
+          "Expedia",
+          "Affitti Brevi Italia",
+          "PrimoPiano sul mare",
+          "La Corte dei Mari",
+          "Happy House"
+        ]
+      },
+      {
+        "domanda": "Come trovare un affitto breve in Romagna per famiglie?",
+        "presente": false,
+        "punteggio": 1.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "CaseVacanza.it",
+          "Airbnb",
+          "Holidu",
+          "Its4Kids",
+          "HomeToGo",
+          "Interhome",
+          "MediaVacanze"
+        ]
+      },
+      {
+        "domanda": "Affitti brevi con cucina in Romagna per una settimana?",
+        "presente": false,
+        "punteggio": 1.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Residence Hotel Le Stelle",
+          "Residence Villa Azzurra",
+          "Airbnb",
+          "CaseVacanza.it",
+          "Vrbo",
+          "Booking.com",
+          "Casa.it",
+          "HomeToGo",
+          "Affitti Brevi Italia Rimini",
+          "Country House I Quattro Passeri"
+        ]
+      },
+      {
+        "domanda": "Case vacanze Romagna con animali ammessi?",
+        "presente": false,
+        "punteggio": 1.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Zampa Vacanza",
+          "Vrbo",
+          "Dogwelcome",
+          "CaseVacanza.it",
+          "Resido.it",
+          "Likibu",
+          "Airbnb",
+          "HomeToGo",
+          "Holidu",
+          "Country House I Quattro Passeri",
+          "Agriturismo Quartarola"
+        ]
+      },
+      {
+        "domanda": "Appartamenti vacanze Romagna per smart working?",
+        "presente": true,
+        "punteggio": 4.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "competitor": [
+          "Casa Calénc",
+          "Club del Sole",
+          "Wonderful Italy",
+          "CaseVacanza.it",
+          "Agriturismo.it",
+          "Airbnb",
+          "Agriturismo Camporosso",
+          "Al Vecchio Convento",
+          "Residence Le Stelle",
+          "AffittiBreviRimini"
+        ]
+      },
+      {
+        "domanda": "Dove dormire in Romagna vicino a più città?",
+        "presente": false,
+        "punteggio": 1.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Collina dei Poeti",
+          "Resort Villa Paola",
+          "Ariminum Hotel",
+          "Palazzo Viviani",
+          "Booking.com",
+          "Airbnb",
+          "Bed-and-breakfast.it",
+          "Borgo Condé Wine Resort",
+          "Country House I Quattro Passeri",
+          "CaseVacanza.it",
+          "Expedia.it"
+        ]
+      }
+    ],
+    "competitor_top": [
+      {
+        "nome": "CaseVacanza.it",
+        "totale": 10,
+        "perplexity": 5,
+        "gemini": 5
+      },
+      {
+        "nome": "Airbnb",
+        "totale": 10,
+        "perplexity": 6,
+        "gemini": 4
+      },
+      {
+        "nome": "Booking.com",
+        "totale": 7,
+        "perplexity": 3,
+        "gemini": 4
+      },
+      {
+        "nome": "Country House I Quattro Passeri",
+        "totale": 6,
+        "perplexity": 0,
+        "gemini": 6
+      },
+      {
+        "nome": "Holidu / HomeToGo",
+        "totale": 6,
+        "perplexity": 3,
+        "gemini": 3
+      },
+      {
+        "nome": "Vrbo",
+        "totale": 5,
+        "perplexity": 3,
+        "gemini": 2
+      },
+      {
+        "nome": "Relais Villa Margherita",
+        "totale": 4,
+        "perplexity": 0,
+        "gemini": 4
+      },
+      {
+        "nome": "Affitti Brevi Italia",
+        "totale": 4,
+        "perplexity": 2,
+        "gemini": 2
+      }
+    ],
+    "azioni": [
+      "Strutturare pagine geografiche citabili per micro-area (Cesena, Rimini, colline, costa, Cesenatico): ogni pagina deve includere nomi di proprietà, prezzi indicativi, distanze e schema markup LodgingBusiness. Questo replica il pattern di Country House I Quattro Passeri e Relais Villa Margherita, i competitor strutturali più citati da Gemini.",
+      "Replicare la strategia Lucea Collection su romagna-affitti-brevi.it: il portfolio con nomi distinti per singola proprietà ha prodotto l'unica presenza a 7/10. Estendere lo stesso approccio al brand principale con contenuti long-form per query tematiche (famiglie, pet, cucina, vista mare) aumenta la superficie citabile su entrambi i motori.",
+      "Costruire presenza su fonti terze indicizzate da Perplexity (Dogwelcome, Zampa Vacanza, Holidu, HomeToGo, blog turistici locali): Perplexity attinge esclusivamente a fonti web referenziate e non cita mai RAB perché il brand è assente dalle directory e dai siti editoriali che il motore già indicizza. Priorità: profili completi su Holidu + HomeToGo + almeno 3 articoli su blog di settore con menzione esplicita del brand."
+    ],
+    "sintesi": "La visibilità complessiva è molto bassa: Perplexity non cita mai i brand target su nessuna delle 10 domande, mentre Gemini li riconosce solo in 2 casi. Le 2 presenze su Gemini riguardano: Romagna Affitti Brevi (#2, 7/10) e Lucea Collection (#9, 7/10). Su Perplexity dominano i grandi aggregatori (Airbnb, CaseVacanza.it, Booking), mentre Gemini alterna aggregatori a strutture specifiche. Il brand RAB è assente dalle directory e dai siti editoriali che Perplexity indicizza."
+  }
+]
