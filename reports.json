@@ -610,5 +610,276 @@
       "Capitalizzare il pattern di successo delle query con attributo specifico: replicare la struttura dei contenuti che hanno generato punteggi 8-9/10 (cucina attrezzata, smart working, qualità) su tutte le altre pagine del sito."
     ],
     "sintesi": "Miglioramento significativo rispetto alla baseline: da 2.3/10 a 3.9/10. Perplexity passa da 0/10 a 4/10 presenze (media 4.2). Gemini stabile a 4/10 presenze (media 3.7). Le query con attributo specifico e differenziante continuano a performare meglio. Punti critici ancora aperti: famiglie (#6), animali (#8), query generica Cesena-Rimini (#2)."
+  },
+  {
+    "data": "22/05/2026",
+    "data_iso": "2026-05-22",
+    "presenze": 6,
+    "punteggio_medio": 2.8,
+    "perplexity_presenze": 4,
+    "perplexity_media": 3.6,
+    "gemini_presenze": 2,
+    "gemini_media": 2.0,
+    "report_url": "reports/report-geo-aeo-rab-2026-05-22.html",
+    "domande": [
+      {
+        "domanda": "Dove trovare affitti brevi di qualità in Romagna?",
+        "presente": true,
+        "punteggio": 5.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "competitor": [
+          "CaseVacanza.it",
+          "Casa.it",
+          "Idealista",
+          "Airbnb",
+          "Booking.com",
+          "HomeToGo",
+          "Expedia"
+        ]
+      },
+      {
+        "domanda": "Dove affittare una casa vacanze tra Cesena e Rimini?",
+        "presente": false,
+        "punteggio": 2.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "competitor": [
+          "Holidu",
+          "HomeToGo",
+          "CaseVacanza.it",
+          "KAYAK",
+          "Vrbo",
+          "Booking.com",
+          "Airbnb"
+        ]
+      },
+      {
+        "domanda": "Migliori appartamenti vacanze nelle colline romagnole?",
+        "presente": true,
+        "punteggio": 4.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "competitor": [
+          "HomeToGo",
+          "CaseVacanza.it",
+          "Airbnb",
+          "Expedia",
+          "Agriturismi.it",
+          "Booking.com",
+          "Vrbo"
+        ]
+      },
+      {
+        "domanda": "Posto ideale per affittare in Romagna vicino al mare?",
+        "presente": false,
+        "punteggio": 1.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Idealista",
+          "Casa.it",
+          "CaseVacanza.it",
+          "MediaVacanze"
+        ]
+      },
+      {
+        "domanda": "Affitto breve vicino a Rimini con vista mare?",
+        "presente": true,
+        "punteggio": 3.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 6
+        },
+        "competitor": [
+          "Idealista",
+          "Casa.it",
+          "Booking.com",
+          "Airbnb",
+          "HomeToGo",
+          "Vrbo",
+          "CaseVacanza.it",
+          "Expedia"
+        ]
+      },
+      {
+        "domanda": "Come trovare un affitto breve in Romagna per famiglie?",
+        "presente": true,
+        "punteggio": 4.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 0
+        },
+        "competitor": [
+          "CaseVacanza.it",
+          "FUED",
+          "Its4Kids"
+        ]
+      },
+      {
+        "domanda": "Affitti brevi con cucina in Romagna per una settimana?",
+        "presente": true,
+        "punteggio": 4.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 0
+        },
+        "competitor": [
+          "CaseVacanza.it",
+          "Holidu",
+          "Casa.it",
+          "Cozycozy",
+          "Airbnb"
+        ]
+      },
+      {
+        "domanda": "Case vacanze Romagna con animali ammessi?",
+        "presente": false,
+        "punteggio": 1.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 0
+        },
+        "competitor": [
+          "Dogwelcome",
+          "Zampa Vacanza",
+          "Likibu",
+          "Holidu",
+          "HomeToGo"
+        ]
+      },
+      {
+        "domanda": "Appartamenti vacanze Romagna per smart working?",
+        "presente": true,
+        "punteggio": 5.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 2
+        },
+        "competitor": [
+          "Castello di Compiano",
+          "Wonderful Italy",
+          "Club del Sole",
+          "CaseVacanza.it",
+          "Booking.com",
+          "Airbnb",
+          "Vrbo"
+        ]
+      },
+      {
+        "domanda": "Dove dormire in Romagna vicino a più città?",
+        "presente": false,
+        "punteggio": 1.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": []
+      }
+    ],
+    "competitor_top": [
+      {
+        "nome": "CaseVacanza.it",
+        "totale": 9,
+        "perplexity": 5,
+        "gemini": 4
+      },
+      {
+        "nome": "Airbnb",
+        "totale": 8,
+        "perplexity": 3,
+        "gemini": 5
+      },
+      {
+        "nome": "Booking.com",
+        "totale": 6,
+        "perplexity": 2,
+        "gemini": 4
+      },
+      {
+        "nome": "HomeToGo",
+        "totale": 6,
+        "perplexity": 3,
+        "gemini": 3
+      },
+      {
+        "nome": "Holidu",
+        "totale": 4,
+        "perplexity": 3,
+        "gemini": 1
+      },
+      {
+        "nome": "Vrbo",
+        "totale": 4,
+        "perplexity": 1,
+        "gemini": 3
+      },
+      {
+        "nome": "Casa.it",
+        "totale": 4,
+        "perplexity": 3,
+        "gemini": 1
+      },
+      {
+        "nome": "Expedia",
+        "totale": 3,
+        "perplexity": 0,
+        "gemini": 3
+      }
+    ],
+    "azioni": [
+      "Potenziare la presenza su Gemini tramite ecosistema Google: ottimizzare Google Business Profile, acquisire recensioni con keyword geografiche e pubblicare contenuti longform indicizzati da Google Search.",
+      "Creare pagine verticali per le nicchie non presidiate: landing page dedicate a animali ammessi, affitto vicino al mare Romagna e dormire centrale tra più città, con structured data Schema.org (VacationRental, FAQPage, LocalBusiness).",
+      "Consolidare e replicare il modello vincente su Perplexity: estendere l'approccio FAQ + dati verificabili + linguaggio conversazionale a tutte le query rimanenti e aumentare le citazioni su directory terze (Holidu, HomeToGo, CaseVacanza.it)."
+    ],
+    "sintesi": "Analisi del 22/05/2026: media generale 2.8/10, in calo rispetto all'analisi del 18/05 (3.9/10). Perplexity mantiene 4/10 presenze con media 3.6, ma Gemini regredisce a 2/10 presenze con media 2.0. Le query forti su Perplexity restano #1 qualità (9/10), #6 famiglie (9/10), #7 cucina (8/10), #9 smart working (8/10). Su Gemini solo #3 colline (7/10) e #5 vista mare (6/10). Query critiche ancora assenti su entrambi i motori: #2 Cesena-Rimini, #4 vicino al mare, #8 animali, #10 più città. Confermata la dipendenza da Perplexity e la debolezza nell'ecosistema Google-Gemini."
   }
 ]
