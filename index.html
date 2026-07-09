@@ -265,6 +265,13 @@
   }
   .competitor-item:last-child { border-bottom: none; }
   .competitor-name { font-size: 0.9rem; color: var(--dark); }
+  .competitor-item.own-entity {
+    background: var(--gold-pale);
+    border-radius: 8px;
+    padding: 10px 14px;
+    border-bottom: none;
+  }
+  .competitor-item.own-entity .competitor-name { color: var(--gold); font-weight: 600; }
   .competitor-count {
     display: flex;
     align-items: center;
@@ -515,6 +522,25 @@ function toPercent(val) {
   return Math.round(val * 10) + '%';
 }
 
+// FIX (RAB #9): i campi aggregati dichiarati nel JSON (presenze, punteggio_medio,
+// perplexity_media, gemini_media) sono generati dall'LLM nella fase di scrittura del
+// report narrativo e non sono affidabili: confrontati con i 4 report HTML originali,
+// in 3 casi su 4 non tornano nemmeno con i punteggi che l'LLM stesso elenca riga per
+// riga nello stesso report. Il dettaglio per domanda (report.domande) e' invece fedele
+// all'originale. Da qui in poi il dashboard ricalcola sempre tutti i KPI da questo
+// dettaglio e ignora i campi dichiarati a livello di report.
+function computeKPIs(report) {
+  const domande = report.domande || [];
+  const n = domande.length || 1;
+  const presenze = domande.filter(d => d.presente).length;
+  const perplexity_presenze = domande.filter(d => d.perplexity && d.perplexity.presente).length;
+  const gemini_presenze = domande.filter(d => d.gemini && d.gemini.presente).length;
+  const punteggio_medio = domande.reduce((s, d) => s + (d.punteggio || 0), 0) / n;
+  const perplexity_media = domande.reduce((s, d) => s + (d.perplexity ? (d.perplexity.punteggio || 0) : 0), 0) / n;
+  const gemini_media = domande.reduce((s, d) => s + (d.gemini ? (d.gemini.punteggio || 0) : 0), 0) / n;
+  return { presenze, perplexity_presenze, gemini_presenze, punteggio_medio, perplexity_media, gemini_media };
+}
+
 function populateSelect() {
   const sel = document.getElementById('runSelect');
   sel.innerHTML = '';
@@ -530,19 +556,23 @@ function loadRun(dataIso) {
   const report = allReports.find(r => r.data_iso === dataIso);
   if (!report) return;
 
+  // KPI ricalcolati dal dettaglio per domanda (non dai campi dichiarati, vedi computeKPIs)
+  const kpi = computeKPIs(report);
+
   // KPI presenze
-  document.getElementById('kpi-presenze').textContent = report.presenze;
-  document.getElementById('kpi-presenze-sub').textContent = `present${report.presenze === 1 ? 'e' : 'i'} su 10 domande`;
+  document.getElementById('kpi-presenze').textContent = kpi.presenze;
+  document.getElementById('kpi-presenze-sub').textContent = `present${kpi.presenze === 1 ? 'e' : 'i'} su 10 domande`;
 
   // KPI Share of AI Voice (percentuale come principale, punteggio come sub)
-  document.getElementById('kpi-punteggio').textContent = toPercent(report.punteggio_medio);
-  document.getElementById('kpi-punteggio-sub').textContent = report.punteggio_medio.toFixed(1) + '/10';
+  document.getElementById('kpi-punteggio').textContent = toPercent(kpi.punteggio_medio);
+  document.getElementById('kpi-punteggio-sub').textContent = kpi.punteggio_medio.toFixed(1) + '/10';
 
   // Trend
   const idx = allReports.findIndex(r => r.data_iso === dataIso);
   if (idx > 0) {
     const prev = allReports[idx - 1];
-    const delta = report.punteggio_medio - prev.punteggio_medio;
+    const kpiPrev = computeKPIs(prev);
+    const delta = kpi.punteggio_medio - kpiPrev.punteggio_medio;
     const deltaPerc = Math.round(delta * 10);
     const trendEl = document.getElementById('kpi-trend');
     trendEl.textContent = (deltaPerc >= 0 ? '+' : '') + deltaPerc + '%';
@@ -554,12 +584,12 @@ function loadRun(dataIso) {
   }
 
   // Motori
-  document.getElementById('motore-perplexity').textContent = toPercent(report.perplexity_media);
+  document.getElementById('motore-perplexity').textContent = toPercent(kpi.perplexity_media);
   document.getElementById('motore-perplexity-sub').textContent =
-    report.perplexity_presenze + '/10 presenze · ' + report.perplexity_media.toFixed(1) + '/10';
-  document.getElementById('motore-gemini').textContent = toPercent(report.gemini_media);
+    kpi.perplexity_presenze + '/10 presenze · ' + kpi.perplexity_media.toFixed(1) + '/10';
+  document.getElementById('motore-gemini').textContent = toPercent(kpi.gemini_media);
   document.getElementById('motore-gemini-sub').textContent =
-    report.gemini_presenze + '/10 presenze · ' + report.gemini_media.toFixed(1) + '/10';
+    kpi.gemini_presenze + '/10 presenze · ' + kpi.gemini_media.toFixed(1) + '/10';
 
   // Status
   document.getElementById('run-status').textContent = 'Analisi del ' + report.data;
@@ -595,24 +625,59 @@ function loadRun(dataIso) {
   });
 
   // Competitor
-  const compMap = {};
-  report.domande.forEach(d => {
-    (d.competitor || []).forEach(c => {
-      compMap[c] = (compMap[c] || 0) + 1;
+  // FIX (RAB #9): il campo report.competitor_top e' gia' corretto (verificato:
+  // totale = perplexity + gemini su tutti i report storici) ma non veniva mai usato.
+  // Il ricalcolo dal vivo sulla lista flat report.domande[].competitor sottostimava
+  // sistematicamente i conteggi (deduplicava i competitor per domanda, perdendo le
+  // menzioni doppie quando lo stesso nome compariva sia su Perplexity che su Gemini
+  // per la stessa domanda) e in piu' cambiava l'ordine di classifica mostrato.
+  let competitorData;
+  if (Array.isArray(report.competitor_top) && report.competitor_top.length > 0) {
+    competitorData = report.competitor_top.map(c => ({ nome: c.nome, totale: c.totale, perplexity: c.perplexity, gemini: c.gemini }));
+  } else {
+    // Fallback difensivo se un report futuro non avesse competitor_top: ricalcolo dal
+    // dettaglio grezzo (meno preciso, vedi nota sopra, ma meglio di niente).
+    const compMap = {};
+    report.domande.forEach(d => {
+      (d.competitor || []).forEach(c => { compMap[c] = (compMap[c] || 0) + 1; });
     });
-  });
-  const sorted = Object.entries(compMap).sort((a,b) => b[1]-a[1]).slice(0, 10);
-  const maxCount = sorted[0]?.[1] || 1;
+    competitorData = Object.entries(compMap).map(([nome, totale]) => ({ nome, totale }));
+  }
+
+  // Riga di confronto diretto per l'entita propria (Gruppo Lucea Collection), mostrata
+  // separatamente SOPRA la classifica competitor (non mescolata nell'ordinamento), stesso
+  // pattern usato nel dashboard reale di Casa Cavour. Usa la stessa "presenza" OR gia'
+  // calcolata per il KPI principale (kpi.perplexity_presenze / kpi.gemini_presenze).
+  // NOTA: il nome "Gruppo Lucea Collection" e' una proposta, da confermare con Vittorio.
+  const ownRow = {
+    nome: 'Gruppo Lucea Collection',
+    totale: kpi.perplexity_presenze + kpi.gemini_presenze,
+    perplexity: kpi.perplexity_presenze,
+    gemini: kpi.gemini_presenze
+  };
+
+  const maxCount = Math.max(competitorData[0]?.totale || 0, ownRow.totale) || 1;
   const compList = document.getElementById('competitor-list');
   compList.innerHTML = '';
-  sorted.forEach(([name, count]) => {
+
+  const ownItem = document.createElement('div');
+  ownItem.className = 'competitor-item own-entity';
+  ownItem.innerHTML =
+    '<div class="competitor-name">🏠 ' + ownRow.nome + '</div>' +
+    '<div class="competitor-count">' +
+      '<div class="competitor-bar"><div class="competitor-bar-fill" style="width:' + ((ownRow.totale / maxCount) * 100) + '%"></div></div>' +
+      ownRow.totale + ' app. <span style="color:var(--muted);font-size:0.75rem">(P:' + ownRow.perplexity + ' G:' + ownRow.gemini + ')</span>' +
+    '</div>';
+  compList.appendChild(ownItem);
+
+  competitorData.slice(0, 10).forEach(c => {
     const item = document.createElement('div');
     item.className = 'competitor-item';
     item.innerHTML =
-      '<div class="competitor-name">' + name + '</div>' +
+      '<div class="competitor-name">' + c.nome + '</div>' +
       '<div class="competitor-count">' +
-        '<div class="competitor-bar"><div class="competitor-bar-fill" style="width:' + ((count/maxCount)*100) + '%"></div></div>' +
-        count + ' ' + (count === 1 ? 'apparizione' : 'apparizioni') +
+        '<div class="competitor-bar"><div class="competitor-bar-fill" style="width:' + ((c.totale / maxCount) * 100) + '%"></div></div>' +
+        c.totale + ' app. <span style="color:var(--muted);font-size:0.75rem">(P:' + (c.perplexity ?? '—') + ' G:' + (c.gemini ?? '—') + ')</span>' +
       '</div>';
     compList.appendChild(item);
   });
@@ -643,10 +708,11 @@ function renderChart() {
   if (currentChart) currentChart.destroy();
 
   const labels = allReports.map(r => r.data);
-  // Share of AI Voice in percentuale (punteggio_medio * 10)
-  const voicePerplexity = allReports.map(r => Math.round(r.perplexity_media * 10));
-  const voiceGemini = allReports.map(r => Math.round(r.gemini_media * 10));
-  const voiceMedia = allReports.map(r => Math.round(r.punteggio_medio * 10));
+  // Share of AI Voice in percentuale (punteggio_medio * 10), ricalcolato dal dettaglio
+  // per domanda con computeKPIs (stesso fix del KPI principale, vedi nota in loadRun)
+  const voicePerplexity = allReports.map(r => Math.round(computeKPIs(r).perplexity_media * 10));
+  const voiceGemini = allReports.map(r => Math.round(computeKPIs(r).gemini_media * 10));
+  const voiceMedia = allReports.map(r => Math.round(computeKPIs(r).punteggio_medio * 10));
 
   currentChart = new Chart(ctx, {
     type: 'line',
