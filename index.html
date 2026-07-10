@@ -207,7 +207,7 @@
   }
   .domande-header {
     display: grid;
-    grid-template-columns: 1fr 100px 80px;
+    grid-template-columns: 1fr 110px 110px 80px;
     padding: 12px 24px;
     background: var(--gold-faint);
     border-bottom: 1px solid var(--line);
@@ -219,7 +219,7 @@
   }
   .domanda-row {
     display: grid;
-    grid-template-columns: 1fr 100px 80px;
+    grid-template-columns: 1fr 110px 110px 80px;
     padding: 16px 24px;
     border-bottom: 1px solid var(--line);
     align-items: center;
@@ -393,7 +393,7 @@
     .page { padding: 24px 16px; }
     .kpi-row { grid-template-columns: 1fr 1fr; }
     .motori-row { grid-template-columns: 1fr; }
-    .domande-header, .domanda-row { grid-template-columns: 1fr 90px 60px; }
+    .domande-header, .domanda-row { grid-template-columns: 1fr 80px 80px 50px; }
     .site-header { padding: 0 16px; }
     .site-footer { flex-direction: column; gap: 8px; text-align: center; }
   }
@@ -472,8 +472,9 @@
   <div class="domande-wrap">
     <div class="domande-header">
       <div>Domanda</div>
-      <div>Presenza</div>
-      <div>Score</div>
+      <div>Perplexity</div>
+      <div>Gemini</div>
+      <div>Punteggio</div>
     </div>
     <div id="domande-list"></div>
   </div>
@@ -610,16 +611,26 @@ function loadRun(dataIso) {
   }
 
   // Domande
+  // FIX (post-deploy RAB #9): la tabella mostrava una sola colonna "Presenza" combinata
+  // (OR dei due motori), mentre il dato dei due motori separati esiste gia' in ogni
+  // domanda (d.perplexity.presente, d.gemini.presente) e non veniva usato. Allineato
+  // al dashboard reale di Casa Cavour, che mostra sempre le due colonne separate.
   const domList = document.getElementById('domande-list');
   domList.innerHTML = '';
   report.domande.forEach(d => {
     const pct = Math.round(d.punteggio * 10);
     const row = document.createElement('div');
     row.className = 'domanda-row';
+    const badgePerp = d.perplexity
+      ? '<span class="badge ' + (d.perplexity.presente ? 'presente' : 'assente') + '">' + (d.perplexity.presente ? '✅ SÌ' : '❌ NO') + '</span>'
+      : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
+    const badgeGem = d.gemini
+      ? '<span class="badge ' + (d.gemini.presente ? 'presente' : 'assente') + '">' + (d.gemini.presente ? '✅ SÌ' : '❌ NO') + '</span>'
+      : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
     row.innerHTML =
       '<div class="q-text">' + d.domanda + '</div>' +
-      '<div><span class="badge ' + (d.presente ? 'presente' : 'assente') + '">' +
-        (d.presente ? '✅ Presente' : '❌ Assente') + '</span></div>' +
+      '<div>' + badgePerp + '</div>' +
+      '<div>' + badgeGem + '</div>' +
       '<div><span class="score-pill">' + pct + '%</span></div>';
     domList.appendChild(row);
   });
