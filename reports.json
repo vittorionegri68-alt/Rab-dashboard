@@ -1177,5 +1177,274 @@
       "Ottimizzare romagna-short-stay.com e Lucea Collection come entità semantiche autonome, con contenuti dedicati, schema markup di brand e presenza su directory internazionali: entrambi i brand risultano con 0 presenze su 20 risposte analizzate, rendendo urgente un piano GEO indipendente per questi asset."
     ],
     "sintesi": "Analisi del 18/06/2026: media generale 45% (4.5/10), massimo storico del progetto. Perplexity presente in 4/10 domande (media 41%), Gemini in 7/10 (media 49%). Gemini registra un recupero netto rispetto al calo del 22/05: da 2/10 a 7/10 presenze, con punteggi 6-8/10 su query geografiche e comparative. Perplexity conferma la forza sulle query qualitative e informazionali (#1, #4, #6, #7) ma rimane assente sulle query geografiche comparative. Gap strutturali confermati: animali (#8) assente su entrambi i motori per la quarta analisi consecutiva; romagna-short-stay.com e Lucea Collection con 0 presenze su 20 risposte."
+  },
+  {
+    "data": "07/08/2026",
+    "data_iso": "2026-08-07",
+    "presenze": 9,
+    "punteggio_medio": 4.4,
+    "perplexity_presenze": 8,
+    "perplexity_media": 6.1,
+    "gemini_presenze": 8,
+    "gemini_media": 2.8,
+    "report_url": "reports/report-geo-aeo-rab-2026-08-07.html",
+    "domande": [
+      {
+        "domanda": "Dove trovare affitti brevi di qualità in Romagna?",
+        "presente": true,
+        "punteggio": 6.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 4
+        },
+        "competitor": [
+          "BnB Emilia Romagna",
+          "CaseVacanza.it",
+          "CleanBnB",
+          "Airbnb",
+          "Expedia"
+        ]
+      },
+      {
+        "domanda": "Dove affittare una casa vacanze tra Cesena e Rimini?",
+        "presente": true,
+        "punteggio": 4.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Agricola Casa Cucina",
+          "La Dolce Vita",
+          "Residenza Leon d'Oro",
+          "Booking.com",
+          "Airbnb",
+          "Vrbo"
+        ]
+      },
+      {
+        "domanda": "Migliori appartamenti vacanze nelle colline romagnole?",
+        "presente": true,
+        "punteggio": 4.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Romagna Case Vacanze",
+          "Holidu",
+          "Booking.com",
+          "Agriturismo Biologico Gradella",
+          "Agriturismo Ca' Francesca"
+        ]
+      },
+      {
+        "domanda": "Posto ideale per affittare in Romagna vicino al mare?",
+        "presente": true,
+        "punteggio": 5.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 2
+        },
+        "competitor": [
+          "FUED",
+          "Casa Stefania Rimini",
+          "Happy House",
+          "B&B Hotel Bella Igea",
+          "Hotel Niagara",
+          "Residenza Nizza"
+        ]
+      },
+      {
+        "domanda": "Affitto breve vicino a Rimini con vista mare?",
+        "presente": true,
+        "punteggio": 4.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "competitor": [
+          "Residence l'Appartamento Rimini",
+          "Gabbiano Apartments",
+          "Affitti Brevi Italia",
+          "CaseVacanza.it",
+          "Casa.it"
+        ]
+      },
+      {
+        "domanda": "Come trovare un affitto breve in Romagna per famiglie?",
+        "presente": true,
+        "punteggio": 5.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 2
+        },
+        "competitor": [
+          "Airbnb",
+          "CaseVacanza.it",
+          "Holidu",
+          "Agriturismo Le Ceregne"
+        ]
+      },
+      {
+        "domanda": "Affitti brevi con cucina in Romagna per una settimana?",
+        "presente": true,
+        "punteggio": 5.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 2
+        },
+        "competitor": [
+          "Casa Pisani by Affitti Brevi Rimini",
+          "Villa Azzurra",
+          "Agriturismo Le Fattorie di Montebello",
+          "Airbnb"
+        ]
+      },
+      {
+        "domanda": "Case vacanze Romagna con animali ammessi?",
+        "presente": false,
+        "punteggio": 1.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Corallo 45 Residenza",
+          "Il Campanaccio San Leo",
+          "Casa Stefania Igea Marina",
+          "La Rosa dei Venti"
+        ]
+      },
+      {
+        "domanda": "Appartamenti vacanze Romagna per smart working?",
+        "presente": true,
+        "punteggio": 6.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 4
+        },
+        "competitor": [
+          "Casa delle Favole",
+          "CaseVacanza.it",
+          "Airbnb",
+          "Residence Sunrise",
+          "Residence l'Appartamento Rimini",
+          "FUED"
+        ]
+      },
+      {
+        "domanda": "Dove dormire in Romagna vicino a più città?",
+        "presente": true,
+        "punteggio": 2.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 4
+        },
+        "competitor": [
+          "Rubicone Hotel",
+          "Hotel Romagna",
+          "Hotel L'Approdo",
+          "Borgo Condé Wine Resort",
+          "Agriturismo Il Cornio"
+        ]
+      }
+    ],
+    "competitor_top": [
+      {
+        "nome": "CaseVacanza.it",
+        "totale": 6,
+        "perplexity": 3,
+        "gemini": 3
+      },
+      {
+        "nome": "Airbnb",
+        "totale": 5,
+        "perplexity": 2,
+        "gemini": 3
+      },
+      {
+        "nome": "Booking.com",
+        "totale": 2,
+        "perplexity": 1,
+        "gemini": 1
+      },
+      {
+        "nome": "Holidu",
+        "totale": 2,
+        "perplexity": 2,
+        "gemini": 0
+      },
+      {
+        "nome": "FUED",
+        "totale": 2,
+        "perplexity": 1,
+        "gemini": 1
+      },
+      {
+        "nome": "Residence l'Appartamento Rimini",
+        "totale": 2,
+        "perplexity": 1,
+        "gemini": 1
+      },
+      {
+        "nome": "BnB Emilia Romagna",
+        "totale": 1,
+        "perplexity": 1,
+        "gemini": 0
+      },
+      {
+        "nome": "CleanBnB",
+        "totale": 1,
+        "perplexity": 1,
+        "gemini": 0
+      }
+    ],
+    "azioni": [
+      "Colmare l'assenza totale sulla query \"animali ammessi\" (#8), l'unica domanda con doppio zero su entrambi i motori: creare una pagina/contenuto dedicato agli animali domestici con policy chiara, foto e dettagli pratici, un segmento di domanda in crescita strutturale.",
+      "Rafforzare la presenza su Gemini con contenuti strutturati (markup + FAQ): i punteggi restano sistematicamente bassi (media 2.8/10) anche dove il brand è presente. Implementare dati strutturati schema.org per LodgingBusiness e FAQPage sulle query dove Perplexity già performa bene (#1, #6, #7) per trascinare il ranking anche su Gemini.",
+      "Presidiare la query geo-specifica \"vicino a Rimini con vista mare\" (#5) su Perplexity, dove il brand è assente mentre Gemini la intercetta già: produrre contenuto che menzioni esplicitamente la distanza dal mare, la vista mare e la posizione tra Cesena e Rimini, per colmare il gap su Perplexity e consolidare la doppia presenza."
+    ],
+    "sintesi": "Analisi del 07/08/2026: media generale 45% (4.5/10). Perplexity presente in 8/10 domande (media 61%), Gemini in 8/10 (media 28%) — nota: il report dichiara Gemini presente in 7/10, ma il ricalcolo dal dettaglio per domanda mostra 8/10 (errore di conteggio nell'intestazione del report narrativo, coerente con quanto già osservato sui report precedenti). Perplexity resta il motore dove il gruppo performa meglio in punteggio, con valori alti su query intenzionali come qualità, famiglie, cucina e smart working (8-9/10); Gemini mostra presenza più ampia ma punteggi sistematicamente bassi (1-2/10 nella maggior parte dei casi), segnalando citazioni marginali o poco contestualizzate. L'unica domanda con assenza totale su entrambi i motori è #8 (animali ammessi). Tra i competitor, CaseVacanza.it e Airbnb dominano la classifica (6 e 5 apparizioni totali), a conferma della pressione degli aggregatori generalisti sulle query geografiche ampie."
   }
 ]
