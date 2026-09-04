@@ -166,7 +166,7 @@
   /* MOTORI ROW */
   .motori-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     margin-bottom: 40px;
   }
@@ -207,7 +207,7 @@
   }
   .domande-header {
     display: grid;
-    grid-template-columns: 1fr 110px 110px 80px;
+    grid-template-columns: 1fr 100px 100px 120px 80px;
     padding: 12px 24px;
     background: var(--gold-faint);
     border-bottom: 1px solid var(--line);
@@ -219,7 +219,7 @@
   }
   .domanda-row {
     display: grid;
-    grid-template-columns: 1fr 110px 110px 80px;
+    grid-template-columns: 1fr 100px 100px 120px 80px;
     padding: 16px 24px;
     border-bottom: 1px solid var(--line);
     align-items: center;
@@ -239,6 +239,7 @@
   }
   .badge.presente { background: var(--green-bg); color: var(--green); }
   .badge.assente { background: var(--red-bg); color: var(--red); }
+  .badge.citata { background: var(--gold-pale); color: var(--gold); }
   .score-pill {
     display: inline-block;
     font-family: 'Cormorant Garamond', serif;
@@ -393,7 +394,7 @@
     .page { padding: 24px 16px; }
     .kpi-row { grid-template-columns: 1fr 1fr; }
     .motori-row { grid-template-columns: 1fr; }
-    .domande-header, .domanda-row { grid-template-columns: 1fr 80px 80px 50px; }
+    .domande-header, .domanda-row { grid-template-columns: 1fr 60px 60px 75px 50px; }
     .site-header { padding: 0 16px; }
     .site-footer { flex-direction: column; gap: 8px; text-align: center; }
   }
@@ -446,6 +447,11 @@
       <div class="motore-value" id="motore-gemini">—</div>
       <div class="motore-sub" id="motore-gemini-sub">presenze — punteggio medio</div>
     </div>
+    <div class="motore-card">
+      <div class="motore-label">ChatGPT</div>
+      <div class="motore-value" id="motore-chatgpt">—</div>
+      <div class="motore-sub" id="motore-chatgpt-sub">presenze — consigliate</div>
+    </div>
   </div>
 
   <!-- GRAFICO STORICO -->
@@ -474,6 +480,7 @@
       <div>Domanda</div>
       <div>Perplexity</div>
       <div>Gemini</div>
+      <div>ChatGPT</div>
       <div>Punteggio</div>
     </div>
     <div id="domande-list"></div>
@@ -533,13 +540,26 @@ function toPercent(val) {
 function computeKPIs(report) {
   const domande = report.domande || [];
   const n = domande.length || 1;
-  const presenze = domande.filter(d => d.presente).length;
+  const presenze = domande.filter(d => d.presente || (d.chatgpt && d.chatgpt.presente)).length;
   const perplexity_presenze = domande.filter(d => d.perplexity && d.perplexity.presente).length;
   const gemini_presenze = domande.filter(d => d.gemini && d.gemini.presente).length;
-  const punteggio_medio = domande.reduce((s, d) => s + (d.punteggio || 0), 0) / n;
   const perplexity_media = domande.reduce((s, d) => s + (d.perplexity ? (d.perplexity.punteggio || 0) : 0), 0) / n;
   const gemini_media = domande.reduce((s, d) => s + (d.gemini ? (d.gemini.punteggio || 0) : 0), 0) / n;
-  return { presenze, perplexity_presenze, gemini_presenze, punteggio_medio, perplexity_media, gemini_media };
+
+  // ChatGPT: terzo motore opzionale (sessione #24, benchmark manuale con ricerca
+  // web). Assente nei report storici precedenti al 02/09: gpt_media resta null
+  // per quei report, cosi' punteggio_medio non cambia formula per lo storico.
+  const gptDomande = domande.filter(d => d.chatgpt !== undefined);
+  const gpt_presenze = gptDomande.filter(d => d.chatgpt.presente).length;
+  const gpt_consigliate = gptDomande.filter(d => d.chatgpt.consigliata).length;
+  const gpt_media = gptDomande.length ? gptDomande.reduce((s, d) => s + d.chatgpt.punteggio, 0) / gptDomande.length : null;
+
+  const punteggio_medio = gpt_media != null
+    ? (perplexity_media + gemini_media + gpt_media) / 3
+    : domande.reduce((s, d) => s + (d.punteggio || 0), 0) / n;
+
+  return { presenze, perplexity_presenze, gemini_presenze, punteggio_medio, perplexity_media, gemini_media,
+           gpt_presenze, gpt_consigliate, gpt_media };
 }
 
 function populateSelect() {
@@ -591,6 +611,10 @@ function loadRun(dataIso) {
   document.getElementById('motore-gemini').textContent = toPercent(kpi.gemini_media);
   document.getElementById('motore-gemini-sub').textContent =
     kpi.gemini_presenze + '/10 presenze · ' + kpi.gemini_media.toFixed(1) + '/10';
+  document.getElementById('motore-chatgpt').textContent = kpi.gpt_media != null ? kpi.gpt_presenze + '/10' : '—';
+  document.getElementById('motore-chatgpt-sub').textContent = kpi.gpt_media != null
+    ? kpi.gpt_consigliate + '/10 consigliate spontaneamente'
+    : 'non ancora testato';
 
   // Status
   document.getElementById('run-status').textContent = 'Analisi del ' + report.data;
@@ -618,7 +642,12 @@ function loadRun(dataIso) {
   const domList = document.getElementById('domande-list');
   domList.innerHTML = '';
   report.domande.forEach(d => {
-    const pct = Math.round(d.punteggio * 10);
+    const vals = [];
+    if (d.perplexity && d.perplexity.punteggio != null) vals.push(d.perplexity.punteggio);
+    if (d.gemini && d.gemini.punteggio != null) vals.push(d.gemini.punteggio);
+    if (d.chatgpt && d.chatgpt.punteggio != null) vals.push(d.chatgpt.punteggio);
+    const scoreRaw = vals.length ? vals.reduce((a,b) => a+b, 0) / vals.length : (d.punteggio || 0);
+    const pct = Math.round(scoreRaw * 10);
     const row = document.createElement('div');
     row.className = 'domanda-row';
     const badgePerp = d.perplexity
@@ -627,10 +656,22 @@ function loadRun(dataIso) {
     const badgeGem = d.gemini
       ? '<span class="badge ' + (d.gemini.presente ? 'presente' : 'assente') + '">' + (d.gemini.presente ? '✅ SÌ' : '❌ NO') + '</span>'
       : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
+    // ChatGPT: badge a 3 stati (assente/citata/consigliata) in una sola colonna
+    let badgeGpt;
+    if (!d.chatgpt) {
+      badgeGpt = '<span style="color:var(--muted);font-size:0.75rem">—</span>';
+    } else if (d.chatgpt.consigliata) {
+      badgeGpt = '<span class="badge presente">✅ Consigliata</span>';
+    } else if (d.chatgpt.presente) {
+      badgeGpt = '<span class="badge citata">🔸 Citata</span>';
+    } else {
+      badgeGpt = '<span class="badge assente">❌ NO</span>';
+    }
     row.innerHTML =
       '<div class="q-text">' + d.domanda + '</div>' +
       '<div>' + badgePerp + '</div>' +
       '<div>' + badgeGem + '</div>' +
+      '<div>' + badgeGpt + '</div>' +
       '<div><span class="score-pill">' + pct + '%</span></div>';
     domList.appendChild(row);
   });
@@ -644,7 +685,7 @@ function loadRun(dataIso) {
   // per la stessa domanda) e in piu' cambiava l'ordine di classifica mostrato.
   let competitorData;
   if (Array.isArray(report.competitor_top) && report.competitor_top.length > 0) {
-    competitorData = report.competitor_top.map(c => ({ nome: c.nome, totale: c.totale, perplexity: c.perplexity, gemini: c.gemini }));
+    competitorData = report.competitor_top.map(c => ({ nome: c.nome, totale: c.totale, perplexity: c.perplexity, gemini: c.gemini, chatgpt: c.chatgpt }));
   } else {
     // Fallback difensivo se un report futuro non avesse competitor_top: ricalcolo dal
     // dettaglio grezzo (meno preciso, vedi nota sopra, ma meglio di niente).
@@ -662,9 +703,10 @@ function loadRun(dataIso) {
   // NOTA: il nome "Gruppo Lucea Collection" e' una proposta, da confermare con Vittorio.
   const ownRow = {
     nome: 'Gruppo Lucea Collection',
-    totale: kpi.perplexity_presenze + kpi.gemini_presenze,
+    totale: kpi.perplexity_presenze + kpi.gemini_presenze + (kpi.gpt_media != null ? kpi.gpt_presenze : 0),
     perplexity: kpi.perplexity_presenze,
-    gemini: kpi.gemini_presenze
+    gemini: kpi.gemini_presenze,
+    chatgpt: kpi.gpt_media != null ? kpi.gpt_presenze : 0
   };
 
   const maxCount = Math.max(competitorData[0]?.totale || 0, ownRow.totale) || 1;
@@ -677,7 +719,7 @@ function loadRun(dataIso) {
     '<div class="competitor-name">🏠 ' + ownRow.nome + '</div>' +
     '<div class="competitor-count">' +
       '<div class="competitor-bar"><div class="competitor-bar-fill" style="width:' + ((ownRow.totale / maxCount) * 100) + '%"></div></div>' +
-      ownRow.totale + ' app. <span style="color:var(--muted);font-size:0.75rem">(P:' + ownRow.perplexity + ' G:' + ownRow.gemini + ')</span>' +
+      ownRow.totale + ' app. <span style="color:var(--muted);font-size:0.75rem">(P:' + ownRow.perplexity + ' G:' + ownRow.gemini + (ownRow.chatgpt ? ' C:'+ownRow.chatgpt : '') + ')</span>' +
     '</div>';
   compList.appendChild(ownItem);
 
@@ -688,7 +730,7 @@ function loadRun(dataIso) {
       '<div class="competitor-name">' + c.nome + '</div>' +
       '<div class="competitor-count">' +
         '<div class="competitor-bar"><div class="competitor-bar-fill" style="width:' + ((c.totale / maxCount) * 100) + '%"></div></div>' +
-        c.totale + ' app. <span style="color:var(--muted);font-size:0.75rem">(P:' + (c.perplexity ?? '—') + ' G:' + (c.gemini ?? '—') + ')</span>' +
+        c.totale + ' app. <span style="color:var(--muted);font-size:0.75rem">(P:' + (c.perplexity ?? '—') + ' G:' + (c.gemini ?? '—') + (c.chatgpt ? ' C:'+c.chatgpt : '') + ')</span>' +
       '</div>';
     compList.appendChild(item);
   });
@@ -724,6 +766,10 @@ function renderChart() {
   const voicePerplexity = allReports.map(r => Math.round(computeKPIs(r).perplexity_media * 10));
   const voiceGemini = allReports.map(r => Math.round(computeKPIs(r).gemini_media * 10));
   const voiceMedia = allReports.map(r => Math.round(computeKPIs(r).punteggio_medio * 10));
+  const voiceChatgpt = allReports.map(r => {
+    const k = computeKPIs(r);
+    return k.gpt_media != null ? Math.round(k.gpt_media * 10) : null;
+  });
 
   currentChart = new Chart(ctx, {
     type: 'line',
@@ -766,6 +812,20 @@ function renderChart() {
           pointRadius: 4,
           tension: 0.3,
           fill: false,
+          yAxisID: 'y'
+        },
+        {
+          label: 'ChatGPT',
+          data: voiceChatgpt,
+          borderColor: '#10a37f',
+          backgroundColor: 'transparent',
+          borderWidth: 1.5,
+          borderDash: [3, 3],
+          pointBackgroundColor: '#10a37f',
+          pointRadius: 4,
+          tension: 0.3,
+          fill: false,
+          spanGaps: true,
           yAxisID: 'y'
         }
       ]
