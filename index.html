@@ -761,11 +761,12 @@ function renderChart() {
   if (currentChart) currentChart.destroy();
 
   const labels = allReports.map(r => r.data);
+  const presenze = allReports.map(r => computeKPIs(r).presenze);
   // Share of AI Voice in percentuale (punteggio_medio * 10), ricalcolato dal dettaglio
   // per domanda con computeKPIs (stesso fix del KPI principale, vedi nota in loadRun)
+  const voiceMedia = allReports.map(r => Math.round(computeKPIs(r).punteggio_medio * 10));
   const voicePerplexity = allReports.map(r => Math.round(computeKPIs(r).perplexity_media * 10));
   const voiceGemini = allReports.map(r => Math.round(computeKPIs(r).gemini_media * 10));
-  const voiceMedia = allReports.map(r => Math.round(computeKPIs(r).punteggio_medio * 10));
   const voiceChatgpt = allReports.map(r => {
     const k = computeKPIs(r);
     return k.gpt_media != null ? Math.round(k.gpt_media * 10) : null;
@@ -777,48 +778,57 @@ function renderChart() {
       labels,
       datasets: [
         {
-          label: 'Media generale',
-          data: voiceMedia,
+          label: 'Presenze su 10',
+          data: presenze,
           borderColor: '#a0782a',
           backgroundColor: 'rgba(160,120,42,0.08)',
-          borderWidth: 2.5,
+          borderWidth: 2,
           pointBackgroundColor: '#a0782a',
           pointRadius: 5,
           tension: 0.3,
           fill: true,
-          yAxisID: 'y'
+          yAxisID: 'y1'
         },
         {
-          label: 'Perplexity',
-          data: voicePerplexity,
-          borderColor: '#4a90d9',
-          backgroundColor: 'transparent',
-          borderWidth: 1.5,
+          label: 'Share of AI Voice',
+          data: voiceMedia,
+          borderColor: '#c9a05a',
+          borderWidth: 2,
           borderDash: [5, 4],
-          pointBackgroundColor: '#4a90d9',
-          pointRadius: 4,
+          pointBackgroundColor: '#c9a05a',
+          pointRadius: 5,
           tension: 0.3,
           fill: false,
-          yAxisID: 'y'
+          yAxisID: 'y2'
         },
         {
-          label: 'Gemini',
-          data: voiceGemini,
-          borderColor: '#34a853',
-          backgroundColor: 'transparent',
+          label: 'Perplexity — Share of AI Voice',
+          data: voicePerplexity,
+          borderColor: '#5b4fcf',
           borderWidth: 1.5,
           borderDash: [3, 3],
-          pointBackgroundColor: '#34a853',
+          pointBackgroundColor: '#5b4fcf',
           pointRadius: 4,
           tension: 0.3,
           fill: false,
-          yAxisID: 'y'
+          yAxisID: 'y2'
         },
         {
-          label: 'ChatGPT',
+          label: 'Gemini — Share of AI Voice',
+          data: voiceGemini,
+          borderColor: '#1a73e8',
+          borderWidth: 1.5,
+          borderDash: [3, 3],
+          pointBackgroundColor: '#1a73e8',
+          pointRadius: 4,
+          tension: 0.3,
+          fill: false,
+          yAxisID: 'y2'
+        },
+        {
+          label: 'ChatGPT — Share of AI Voice',
           data: voiceChatgpt,
           borderColor: '#10a37f',
-          backgroundColor: 'transparent',
           borderWidth: 1.5,
           borderDash: [3, 3],
           pointBackgroundColor: '#10a37f',
@@ -826,13 +836,14 @@ function renderChart() {
           tension: 0.3,
           fill: false,
           spanGaps: true,
-          yAxisID: 'y'
+          yAxisID: 'y2'
         }
       ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: { padding: { top: 24, right: 8, bottom: 4, left: 4 } },
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: {
@@ -844,12 +855,7 @@ function renderChart() {
           titleColor: '#c9a05a',
           bodyColor: '#fff',
           padding: 12,
-          cornerRadius: 8,
-          callbacks: {
-            label: function(context) {
-              return context.dataset.label + ': ' + context.parsed.y + '%';
-            }
-          }
+          cornerRadius: 8
         }
       },
       scales: {
@@ -857,24 +863,19 @@ function renderChart() {
           grid: { color: '#f0ebe4' },
           ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8a7d72' }
         },
-        y: {
-          type: 'linear',
-          position: 'left',
-          min: 0,
-          max: 100,
+        y1: {
+          type: 'linear', position: 'left',
+          min: 0, max: 10,
           grid: { color: '#f0ebe4' },
-          ticks: {
-            font: { family: 'DM Sans', size: 11 },
-            color: '#8a7d72',
-            stepSize: 20,
-            callback: function(val) { return val + '%'; }
-          },
-          title: {
-            display: true,
-            text: 'Share of AI Voice',
-            font: { family: 'DM Sans', size: 11 },
-            color: '#8a7d72'
-          }
+          ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8a7d72', stepSize: 1 },
+          title: { display: true, text: 'Presenze', font: { family: 'DM Sans', size: 11 }, color: '#8a7d72' }
+        },
+        y2: {
+          type: 'linear', position: 'right',
+          min: 0, max: 100,
+          grid: { drawOnChartArea: false },
+          ticks: { font: { family: 'DM Sans', size: 11 }, color: '#c9a05a', callback: v => v + '%' },
+          title: { display: true, text: 'Share of AI Voice (%)', font: { family: 'DM Sans', size: 11 }, color: '#c9a05a' }
         }
       }
     }
