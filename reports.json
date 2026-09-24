@@ -1840,5 +1840,432 @@
     ],
     "sintesi": "Analisi del 02/09/2026: media generale 45% (4.5/10), copertura OR record (10/10 domande con almeno una presenza, mai raggiunto prima). Perplexity presente in 9/10 domande (media 59%), Gemini in 8/10 (media 31%) — nota: il report dichiara Gemini presente in 7/10, ma il ricalcolo dal dettaglio per domanda mostra 8/10, stesso tipo di scarto già osservato sistematicamente sui report precedenti nell'intestazione generata dall'LLM. Perplexity resta il motore più favorevole, con punteggi alti su query generali (qualità, cucina, colline, famiglie, smart working: 8-9/10), ma crolla su \"vista mare Rimini\" e \"animali ammessi\" (1/10 su entrambe). Gemini mostra copertura più ampia del solito ma punteggi ancora bassi nella maggior parte dei casi, con un picco isolato sulla domanda \"vicino a più città\" (7/10). Tra i competitor, Holidu e CaseVacanza.it guidano la classifica (4 apparizioni ciascuno), con le OTA generaliste che dominano soprattutto su Gemini mentre su Perplexity emergono strutture locali specifiche sulle stesse nicchie geografiche del gruppo. ChatGPT (benchmark manuale del 04/09, solo risultati con ricerca web) mostra un risultato nettamente piu' forte dei due motori automatici: presente e consigliata spontaneamente su tutte e 10 le domande, punteggio pieno. Tra i competitor citati da ChatGPT compaiono nomi che Perplexity e Gemini non segnalano quasi mai, come Emilia-Romagna Welcome e Riviera di Rimini, mentre restano confermati i grandi player generalisti (Airbnb, Booking.com, CaseVacanza.it) gia' dominanti sugli altri due motori.",
     "nota": "Aggiornamento 04/09/2026: aggiunto benchmark manuale ChatGPT sulle stesse 10 domande, solo risultati con ricerca web attiva. Punteggio ChatGPT convertito da binario a scala 0-10 (consigliata=10, presente ma solo citata=3, assente=0), calibrato sulla distribuzione storica dei punteggi Perplexity/Gemini di RAB (media 2.72 per le menzioni deboli su 6 report storici, valore coerente con quello trovato su Casa Cavour, 2.45, verificato indipendentemente). punteggio_medio ora a 3 motori per questo report; i 5 report precedenti restano a 2 motori, nessun campo chatgpt disponibile per quelli."
+  },
+  {
+    "data": "24/09/2026",
+    "data_iso": "2026-09-24",
+    "presenze": 10,
+    "punteggio_medio": 4.07,
+    "perplexity_presenze": 7,
+    "perplexity_media": 6.0,
+    "gemini_presenze": 9,
+    "gemini_media": 2.6,
+    "chatgpt_presenze": 8,
+    "chatgpt_media": 3.6,
+    "report_url": "reports/report-geo-aeo-rab-2026-09-24.html",
+    "domande": [
+      {
+        "domanda": "Dove trovare affitti brevi di qualità in Romagna?",
+        "presente": true,
+        "punteggio": 6.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 4
+        },
+        "competitor": [
+          "Visit Romagna",
+          "Bed-and-breakfast.it",
+          "Expedia",
+          "Romagna Case",
+          "Il Corso Apartment",
+          "Ma Maison Almerici",
+          "Appartamento La Rocca"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": true,
+          "punteggio": 10.0,
+          "competitor": [
+            "Airbnb",
+            "Booking.com",
+            "CaseVacanza.it",
+            "Holidu"
+          ],
+          "run_consistenza": "3/3"
+        }
+      },
+      {
+        "domanda": "Dove affittare una casa vacanze tra Cesena e Rimini?",
+        "presente": true,
+        "punteggio": 4.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Holidu",
+          "Casevacanza.it",
+          "Airbnb",
+          "Romagna Case Vacanze",
+          "FUED",
+          "Affitti Brevi Italia"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": false,
+          "punteggio": 2.0,
+          "competitor": [
+            "Airbnb",
+            "Booking.com",
+            "CaseVacanza.it",
+            "Holidu"
+          ],
+          "run_consistenza": "1/3"
+        }
+      },
+      {
+        "domanda": "Migliori appartamenti vacanze nelle colline romagnole?",
+        "presente": true,
+        "punteggio": 4.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Agriturismo Case Nuove",
+          "Podere del Germano Reale",
+          "Agriturismo Freelandia",
+          "Country House I Quattro Passeri"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": true,
+          "punteggio": 5.0,
+          "competitor": [
+            "Booking.com",
+            "Airbnb",
+            "CaseVacanza.it",
+            "Holidu",
+            "Agriturismi.it"
+          ],
+          "run_consistenza": "2/3"
+        }
+      },
+      {
+        "domanda": "Posto ideale per affittare in Romagna vicino al mare?",
+        "presente": true,
+        "punteggio": 6.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 4
+        },
+        "competitor": [
+          "Romagna Case",
+          "Podere del Germano Reale",
+          "Country House I Quattro Passeri",
+          "CaseVacanza.it",
+          "Holidu",
+          "Casa Stefania Rimini"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": true,
+          "punteggio": 5.0,
+          "competitor": [
+            "Booking.com",
+            "Airbnb",
+            "CaseVacanza.it",
+            "Holidu"
+          ],
+          "run_consistenza": "2/3"
+        }
+      },
+      {
+        "domanda": "Affitto breve vicino a Rimini con vista mare?",
+        "presente": true,
+        "punteggio": 4.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 7
+        },
+        "competitor": [
+          "Podere del Germano Reale",
+          "Affitti Brevi Italia",
+          "Airbnb",
+          "Appartamento Vista Mare - Affitti Brevi Italia",
+          "Appartamenti Leone",
+          "B&B The Sea Rimini"
+        ],
+        "chatgpt": {
+          "presente": false,
+          "consigliata": false,
+          "punteggio": 0.0,
+          "competitor": [
+            "Booking.com",
+            "Airbnb",
+            "Holidu"
+          ],
+          "run_consistenza": "0/3"
+        }
+      },
+      {
+        "domanda": "Come trovare un affitto breve in Romagna per famiglie?",
+        "presente": true,
+        "punteggio": 5.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 2
+        },
+        "competitor": [
+          "Vrbo",
+          "Holidu",
+          "Likibu",
+          "Airbnb",
+          "CaseVacanza.it",
+          "FUED",
+          "Affitti Brevi Italia Rimini"
+        ],
+        "chatgpt": {
+          "presente": false,
+          "consigliata": false,
+          "punteggio": 0.0,
+          "competitor": [
+            "Airbnb",
+            "Booking.com",
+            "CaseVacanza.it",
+            "Holidu"
+          ],
+          "run_consistenza": "0/3"
+        }
+      },
+      {
+        "domanda": "Affitti brevi con cucina in Romagna per una settimana?",
+        "presente": true,
+        "punteggio": 5.0,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 9
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Cevedale11",
+          "B&B Primrose Residence",
+          "Affitti Brevi Rimini",
+          "Rimini Case",
+          "Residence D'Azeglio",
+          "Residence Marittima",
+          "Residence Perla"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": false,
+          "punteggio": 2.0,
+          "competitor": [
+            "Airbnb",
+            "Booking.com",
+            "CaseVacanza.it",
+            "Holidu"
+          ],
+          "run_consistenza": "1/3"
+        }
+      },
+      {
+        "domanda": "Case vacanze Romagna con animali ammessi?",
+        "presente": false,
+        "punteggio": 1.0,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "competitor": [
+          "ZampaVacanza",
+          "Vrbo",
+          "Likibu",
+          "Romagna Case Vacanze",
+          "La Rosa dei Venti",
+          "Patty Sweet Home",
+          "BdbApartment"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": false,
+          "punteggio": 2.0,
+          "competitor": [
+            "Vrbo",
+            "CaseVacanza.it",
+            "Airbnb",
+            "Holidu"
+          ],
+          "run_consistenza": "1/3"
+        }
+      },
+      {
+        "domanda": "Appartamenti vacanze Romagna per smart working?",
+        "presente": true,
+        "punteggio": 4.5,
+        "perplexity": {
+          "presente": true,
+          "punteggio": 8
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 1
+        },
+        "competitor": [
+          "Residence Villa Milena",
+          "Podere del Germano Reale",
+          "Casa de Maza Pedar",
+          "Hotel Mon Pays",
+          "Hotel Gaston",
+          "Hotel Amicizia"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": true,
+          "punteggio": 5.0,
+          "competitor": [
+            "Airbnb",
+            "Booking.com",
+            "CaseVacanza.it",
+            "Casa Cavour"
+          ],
+          "run_consistenza": "2/3"
+        }
+      },
+      {
+        "domanda": "Dove dormire in Romagna vicino a più città?",
+        "presente": true,
+        "punteggio": 2.5,
+        "perplexity": {
+          "presente": false,
+          "punteggio": 1
+        },
+        "gemini": {
+          "presente": true,
+          "punteggio": 4
+        },
+        "competitor": [
+          "Hotel Romagna Cesena",
+          "Agriturismo I Quattro Passeri",
+          "Casale del Fattore",
+          "Country House I Quattro Passeri",
+          "Agriturismo Freelandia",
+          "Dimora Storica Cà Bianca"
+        ],
+        "chatgpt": {
+          "presente": true,
+          "consigliata": true,
+          "punteggio": 5.0,
+          "competitor": [
+            "Booking.com",
+            "Airbnb",
+            "CaseVacanza.it",
+            "Casa Cavour",
+            "Visit Romagna"
+          ],
+          "run_consistenza": "2/3"
+        }
+      }
+    ],
+    "competitor_top": [
+      {
+        "nome": "Airbnb",
+        "totale": 13,
+        "perplexity": 3,
+        "gemini": 0,
+        "chatgpt": 10
+      },
+      {
+        "nome": "CaseVacanza.it",
+        "totale": 13,
+        "perplexity": 2,
+        "gemini": 2,
+        "chatgpt": 9
+      },
+      {
+        "nome": "Holidu",
+        "totale": 11,
+        "perplexity": 2,
+        "gemini": 1,
+        "chatgpt": 8
+      },
+      {
+        "nome": "Booking.com",
+        "totale": 9,
+        "perplexity": 0,
+        "gemini": 0,
+        "chatgpt": 9
+      },
+      {
+        "nome": "Podere del Germano Reale",
+        "totale": 5,
+        "perplexity": 4,
+        "gemini": 1,
+        "chatgpt": 0
+      },
+      {
+        "nome": "Romagna Case Vacanze",
+        "totale": 3,
+        "perplexity": 2,
+        "gemini": 1,
+        "chatgpt": 0
+      },
+      {
+        "nome": "Agriturismo Freelandia",
+        "totale": 3,
+        "perplexity": 1,
+        "gemini": 2,
+        "chatgpt": 0
+      },
+      {
+        "nome": "Country House I Quattro Passeri",
+        "totale": 3,
+        "perplexity": 1,
+        "gemini": 2,
+        "chatgpt": 0
+      },
+      {
+        "nome": "Vrbo",
+        "totale": 3,
+        "perplexity": 2,
+        "gemini": 0,
+        "chatgpt": 1
+      },
+      {
+        "nome": "Visit Romagna",
+        "totale": 2,
+        "perplexity": 1,
+        "gemini": 0,
+        "chatgpt": 1
+      }
+    ],
+    "azioni": [
+      "Approfondire perche' Perplexity e' passato da 9/10 a 7/10 presenze rispetto al report del 02/09: verificare se e' un effetto di rumore normale (Perplexity non e' triplicato in questo N8N come i report storici, quindi un singolo campione per domanda e' meno stabile) o un segnale reale, prima di modificare qualunque contenuto sulla base di questo solo dato.",
+      "La domanda #8 (animali ammessi) resta la piu' debole su tutti e 3 i motori nonostante il contenuto dedicato gia' pubblicato: prima di scrivere nuovi contenuti, verificare se le pagine pubblicate il 09/09 e i link interni aggiunti il 24/09 sono effettivamente indicizzate (Google Search Console, se disponibile) e dare tempo alla propagazione prima di considerare il problema di contenuto anziche' di tempo/indicizzazione.",
+      "La conferma robusta (30 osservazioni su 3 run) che ChatGPT senza web resta a 0/10 conferma la Leva 2 GEO/AEO gia' individuata e mai affrontata: valutare con Vittorio se e quando affrontarla, dato che agisce su un canale diverso (visibilita' nel training/knowledge del modello, non nella ricerca web) rispetto al lavoro fatto finora."
+    ],
+    "sintesi": "Analisi del 24/09/2026: media generale a 3 motori 4.07/10 (40.7%). Perplexity presente in 7/10 domande (media 6.0/10), in calo rispetto al report precedente (02/09: 9/10 presenze, media 5.9). Gemini presente in 9/10 domande (media 2.6/10): il report N8N dichiara 8/10, ma il ricalcolo dal dettaglio per domanda mostra 9/10, stesso scarto sistematico gia' osservato sui report precedenti nell'intestazione generata dall'LLM (qui in miglioramento rispetto alle 8/10 corrette del report precedente). ChatGPT con web, ribenchmarkato con metodologia nuova (3 run manuali per verificare la consistenza, non piu' un singolo campione): presente in 8/10 domande ma con punteggio medio pesato sulla consistenza di 3.6/10, nettamente piu' basso del 10/10 registrato il 04/09 su singolo campione. Il confronto diretto con quel dato precedente va preso con cautela perche' la metodologia e' cambiata (da singolo campione a media pesata su 3 run), ma il dato conferma che la presenza non e' stabile su ripetizione: alcune domande risultano citate in 1 run su 3, altre in tutti e 3. ChatGPT senza web ribenchmarkato per la prima volta con 3 run: 0/10 in tutti e 3 i run su tutte le 10 domande, conferma solida (30 osservazioni) della Leva 2 GEO/AEO non ancora affrontata (il sito non ha presenza quando il modello non puo' cercare sul web). La domanda #8 (animali ammessi) resta il punto piu' debole in assoluto: assente su Perplexity e Gemini, presente solo debolmente su ChatGPT con web (1 run su 3, punteggio 2/10), nonostante l'articolo dedicato pubblicato il 09/09 e i link interni aggiunti in questa stessa sessione il 24/09 verso quell'articolo: al momento della misurazione questi interventi non hanno ancora inciso sui motori automatici. Tra i competitor, Airbnb e CaseVacanza.it guidano la classifica (13 apparizioni ciascuno), seguiti da Holidu (11) e Booking.com (9, tutte da ChatGPT). \"Casa Cavour\" e' comparsa 2 volte tra le citazioni ChatGPT ma non e' stata contata come competitor: e' un'altra struttura dello stesso gruppo Lucea Collection, non un concorrente esterno.",
+    "nota": "Report del 24/09/2026: Perplexity e Gemini da workflow N8N \"GEO/AEO Analisi\" v1.2 (primo utilizzo confermato dopo l'import), non ancora chiaro se triplicato per domanda come da progetto originale o campione singolo (l'HTML esportato non lo specifica, da verificare con Vittorio al prossimo report). ChatGPT ribenchmarkato con nuova metodologia a 3 run manuali (WEB ATTIVO e WEB DISATTIVATO), sostituendo il singolo campione usato il 04/09: punteggio calcolato con peso di consistenza (1/3 run -> 2/10, 2/3 -> 5/10, 3/3 -> 10/10), stessa logica di peso gia' usata per la triplicazione Perplexity/Gemini nel workflow N8N. Campo aggiuntivo \"run_consistenza\" per domanda nel blocco chatgpt di questo report, assente nei report precedenti. \"consigliata\" per ChatGPT ridefinita come presente in almeno 2 run su 3 (non piu' un singolo giudizio binario). competitor_top ricalcolato a mano dal dettaglio grezzo di tutti e 3 i motori (nessun campo competitor_top fornito a monte per questo report), escludendo esplicitamente \"Casa Cavour\" dal conteggio competitor perche' e' un'altra struttura dello stesso gruppo."
   }
 ]
