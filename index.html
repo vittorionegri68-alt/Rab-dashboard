@@ -537,14 +537,31 @@ function toPercent(val) {
 // riga nello stesso report. Il dettaglio per domanda (report.domande) e' invece fedele
 // all'originale. Da qui in poi il dashboard ricalcola sempre tutti i KPI da questo
 // dettaglio e ignora i campi dichiarati a livello di report.
+// SERIE DI METODO (sessione Casa Cavour #32, stessa logica della dashboard Casa Cavour).
+// Dal 26/09/2026 il workflow N8N RAB v1.3 usa il metodo v3.5: presenza da controllo
+// testuale, punteggio calcolato in codice, correzione del Merge che nella v1.2
+// duplicava i giudizi. I report fino al 24/09 non sono confrontabili punto per punto
+// con i nuovi: trend e grafico trattano le due serie come separate. Un report e' v3.5
+// se il campo metodologia inizia con "v3.5"; tutto il resto e' storico.
+function metodoDi(r) {
+  return (r && typeof r.metodologia === 'string' && r.metodologia.indexOf('v3.5') === 0) ? 'v3.5' : 'storico';
+}
+function haChatGPT(r) {
+  return (r.domande || []).some(d => d.chatgpt !== undefined);
+}
+
 function computeKPIs(report) {
   const domande = report.domande || [];
   const n = domande.length || 1;
   const presenze = domande.filter(d => d.presente || (d.chatgpt && d.chatgpt.presente)).length;
   const perplexity_presenze = domande.filter(d => d.perplexity && d.perplexity.presente).length;
   const gemini_presenze = domande.filter(d => d.gemini && d.gemini.presente).length;
-  const perplexity_media = domande.reduce((s, d) => s + (d.perplexity ? (d.perplexity.punteggio || 0) : 0), 0) / n;
-  const gemini_media = domande.reduce((s, d) => s + (d.gemini ? (d.gemini.punteggio || 0) : 0), 0) / n;
+  // Motori in errore tecnico (campo errore, solo dal metodo v3.5) esclusi dalla media:
+  // un errore non e' un'assenza. Nello storico il campo non esiste e il calcolo non cambia.
+  const pOk = domande.filter(d => !(d.perplexity && d.perplexity.errore));
+  const gOk = domande.filter(d => !(d.gemini && d.gemini.errore));
+  const perplexity_media = pOk.reduce((s, d) => s + (d.perplexity ? (d.perplexity.punteggio || 0) : 0), 0) / (pOk.length || 1);
+  const gemini_media = gOk.reduce((s, d) => s + (d.gemini ? (d.gemini.punteggio || 0) : 0), 0) / (gOk.length || 1);
 
   // ChatGPT: terzo motore opzionale (sessione #24, benchmark manuale con ricerca
   // web). Assente nei report storici precedenti al 02/09: gpt_media resta null
@@ -590,18 +607,28 @@ function loadRun(dataIso) {
 
   // Trend
   const idx = allReports.findIndex(r => r.data_iso === dataIso);
-  if (idx > 0) {
+  const trendEl = document.getElementById('kpi-trend');
+  const trendSub = document.getElementById('kpi-trend-sub');
+  trendEl.style.color = '';
+  if (idx > 0 && metodoDi(allReports[idx - 1]) === metodoDi(report)) {
     const prev = allReports[idx - 1];
     const kpiPrev = computeKPIs(prev);
-    const delta = kpi.punteggio_medio - kpiPrev.punteggio_medio;
+    // Con set di motori diverso (ChatGPT in uno solo dei due report) si confrontano
+    // solo Perplexity e Gemini, presenti in entrambi
+    const stessiMotori = haChatGPT(prev) === haChatGPT(report);
+    const oggi = stessiMotori ? kpi.punteggio_medio : (kpi.perplexity_media + kpi.gemini_media) / 2;
+    const ieri = stessiMotori ? kpiPrev.punteggio_medio : (kpiPrev.perplexity_media + kpiPrev.gemini_media) / 2;
+    const delta = oggi - ieri;
     const deltaPerc = Math.round(delta * 10);
-    const trendEl = document.getElementById('kpi-trend');
     trendEl.textContent = (deltaPerc >= 0 ? '+' : '') + deltaPerc + '%';
     trendEl.style.color = delta >= 0 ? 'var(--green)' : 'var(--red)';
-    document.getElementById('kpi-trend-sub').textContent = 'rispetto al ' + prev.data;
+    trendSub.textContent = 'rispetto al ' + prev.data + (stessiMotori ? '' : ', solo Perplexity e Gemini');
+  } else if (idx > 0) {
+    trendEl.textContent = '—';
+    trendSub.textContent = 'nuovo metodo ' + metodoDi(report) + ', nessun confronto con il ' + allReports[idx - 1].data;
   } else {
-    document.getElementById('kpi-trend').textContent = '—';
-    document.getElementById('kpi-trend-sub').textContent = 'prima analisi disponibile';
+    trendEl.textContent = '—';
+    trendSub.textContent = 'prima analisi disponibile';
   }
 
   // Motori
@@ -650,11 +677,13 @@ function loadRun(dataIso) {
     const pct = Math.round(scoreRaw * 10);
     const row = document.createElement('div');
     row.className = 'domanda-row';
+    // Motore in errore tecnico (metodo v3.5): nessun dato, non un'assenza
+    const badgeErrore = '<span style="color:var(--muted);font-size:0.75rem" title="Errore tecnico, nessun campione valido">errore</span>';
     const badgePerp = d.perplexity
-      ? '<span class="badge ' + (d.perplexity.presente ? 'presente' : 'assente') + '">' + (d.perplexity.presente ? '✅ SÌ' : '❌ NO') + '</span>'
+      ? (d.perplexity.errore ? badgeErrore : '<span class="badge ' + (d.perplexity.presente ? 'presente' : 'assente') + '">' + (d.perplexity.presente ? '✅ SÌ' : '❌ NO') + '</span>')
       : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
     const badgeGem = d.gemini
-      ? '<span class="badge ' + (d.gemini.presente ? 'presente' : 'assente') + '">' + (d.gemini.presente ? '✅ SÌ' : '❌ NO') + '</span>'
+      ? (d.gemini.errore ? badgeErrore : '<span class="badge ' + (d.gemini.presente ? 'presente' : 'assente') + '">' + (d.gemini.presente ? '✅ SÌ' : '❌ NO') + '</span>')
       : '<span style="color:var(--muted);font-size:0.75rem">—</span>';
     // ChatGPT: badge a 3 stati (assente/citata/consigliata) in una sola colonna
     let badgeGpt;
@@ -772,11 +801,48 @@ function renderChart() {
     return k.gpt_media != null ? Math.round(k.gpt_media * 10) : null;
   });
 
+  // Serie di metodo per indice: il segmento che collega due report di metodo diverso
+  // e' trasparente, cosi' la linea non suggerisce un calo o un aumento dovuto solo al
+  // cambio di scala. Linea verticale tratteggiata sul punto di rottura.
+  const serie = allReports.map(metodoDi);
+  const segmentoSerie = {
+    borderColor: c => serie[c.p0DataIndex] !== serie[c.p1DataIndex] ? 'rgba(0,0,0,0)' : undefined,
+    backgroundColor: c => serie[c.p0DataIndex] !== serie[c.p1DataIndex] ? 'rgba(0,0,0,0)' : undefined
+  };
+  const cambioMetodoPlugin = {
+    id: 'cambioMetodo',
+    afterDatasetsDraw(chart) {
+      const x = chart.scales.x;
+      const area = chart.chartArea;
+      const c = chart.ctx;
+      serie.forEach((s, i) => {
+        if (i === 0 || s === serie[i - 1]) return;
+        const px = (x.getPixelForValue(i - 1) + x.getPixelForValue(i)) / 2;
+        c.save();
+        c.strokeStyle = '#8a7d72';
+        c.lineWidth = 1;
+        c.setLineDash([4, 4]);
+        c.beginPath();
+        c.moveTo(px, area.top);
+        c.lineTo(px, area.bottom);
+        c.stroke();
+        c.setLineDash([]);
+        c.fillStyle = '#8a7d72';
+        c.font = '11px DM Sans, sans-serif';
+        c.textAlign = 'center';
+        c.fillText('metodo ' + s, px, area.top - 6);
+        c.restore();
+      });
+    }
+  };
+  const conSerie = ds => ds.map(d => Object.assign(d, { segment: segmentoSerie }));
+
   currentChart = new Chart(ctx, {
     type: 'line',
+    plugins: [cambioMetodoPlugin],
     data: {
       labels,
-      datasets: [
+      datasets: conSerie([
         {
           label: 'Presenze su 10',
           data: presenze,
@@ -838,7 +904,7 @@ function renderChart() {
           spanGaps: true,
           yAxisID: 'y2'
         }
-      ]
+      ])
     },
     options: {
       responsive: true,
