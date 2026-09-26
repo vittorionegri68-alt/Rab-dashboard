@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report GEO/AEO Romagna Affitti Brevi: 26/09/2026 (completo, 3 motori)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, serif; max-width: 860px; margin: 40px auto; padding: 0 24px 60px; color: #1a1a1a; background: #fafaf8; line-height: 1.8; }
+  .header { background: #a0782a; color: white; padding: 28px 36px; border-radius: 10px; margin-bottom: 2.5em; }
+  .header h1 { color: white; font-size: 1.6em; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 10px; margin-bottom: 10px; }
+  .header p { color: rgba(255,255,255,0.85); font-size: 0.9em; font-family: sans-serif; }
+  h2 { color: #a0782a; margin-top: 2em; margin-bottom: 0.5em; font-size: 1.2em; }
+  hr.separator { border: none; border-top: 2px solid #a0782a; margin: 1.8em 0; }
+  p { margin: 0.8em 0; }
+  .presente { color: #2e7d32; font-weight: bold; }
+  .assente { color: #c62828; font-weight: bold; }
+  .nota-metodo { background: #f5ede0; border-left: 4px solid #a0782a; padding: 14px 22px; border-radius: 0 8px 8px 0; font-size: 0.9em; margin: 1.2em 0; }
+  .footer { margin-top: 3em; padding-top: 1.2em; border-top: 1px solid #ddd; font-size: 0.82em; color: #999; font-family: sans-serif; text-align: center; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Report GEO/AEO: Romagna Affitti Brevi (completo)</h1>
+  <p>Perplexity + Gemini: 26/09/2026 (workflow N8N RAB v1.3) &nbsp;|&nbsp; ChatGPT: 26/09/2026 (benchmark manuale, 3 run, solo con ricerca web) &nbsp;|&nbsp; Metodo v3.5 &nbsp;|&nbsp; RAB Analytics</p>
+</div>
+<div class="contenuto">
+<h2>RISULTATO COMPLESSIVO</h2>
+<p>Perplexity: gruppo presente in 7/10 domande valide, punteggio medio 5.8/10<br>
+Gemini: gruppo presente in 7/10 domande valide, punteggio medio 3/10<br>
+ChatGPT (con web, 3 run manuali): gruppo citato in 10/10 domande, con motivazione specifica in 9/10, punteggio medio 6.2/10<br>
+ChatGPT senza web: 0/30<br>
+Media generale a 3 motori: 5.0/10 (solo Perplexity e Gemini: 4.4/10)</p>
+<div class="nota-metodo">Metodo v3.5 (workflow RAB v1.3): 3 campioni per motore e domanda, campioni con errore tecnico esclusi. Presenza verificata con controllo testuale sui nomi del gruppo Lucea Collection (Romagna Affitti Brevi, Romagna Short Stay, Garibaldina 75, Samilla Loft, Casa Cavour, domini inclusi): presente = SI se il gruppo compare in almeno 1 campione valido su 3; piu' nomi del gruppo nella stessa risposta contano come una sola presenza. Punteggio per campione calcolato in codice: non nominata 0, citata in elenco 3, con motivazione specifica 7, bonus posizione 1a +3, 2a +2, 3a +1. Punteggio della domanda = media dei campioni validi. Scala non confrontabile punto per punto con i report fino alla v1.2. Il trend e' calcolato dalla dashboard. ChatGPT: benchmark manuale con la stessa scala e le stesse regole, 3 run da chat nuova e vuota, posizioni ricavate dall'ordine di citazione nel testo.</div>
+<hr class="separator">
+<h2>DETTAGLIO PER DOMANDA</h2>
+<p><strong>#1 | Dove trovare affitti brevi di qualità in Romagna?</strong><br>
+Perplexity: <span class="presente">SI</span> (3/3) | Punteggio: 10/10 | Competitor: Agriturismo Carlini, Agriturismo.net, FormulaVino, Agriturismo Emilia-Romagna, Idealista, Country House I Quattro Passeri<br>
+Gemini: <span class="presente">SI</span> (2/3) | Punteggio: 6.7/10 | Competitor: Airbnb, Booking.com, Affitti Brevi Italia RIMINI, CaseVacanza.it, Holidu, Country House I Quattro Passeri<br>
+ChatGPT (con web): <span class="presente">SI</span> (3/3) | Punteggio: 7.0/10 (run a 4a/5 con motivazione; run b 4a/4 con motivazione; run c 5a/5 con motivazione) | Risorse concorrenti: Booking.com, Airbnb, Emilia-Romagna Turismo, Vrbo</p>
+<p><strong>#2 | Dove affittare una casa vacanze tra Cesena e Rimini?</strong><br>
+Perplexity: <span class="assente">NO</span> (0/3) | Punteggio: 0/10 | Competitor: Holidu, Alberghi.it, Casamundo, Likibu, Bluepillow, Airbnb<br>
+Gemini: <span class="assente">NO</span> (0/3) | Punteggio: 0/10 | Competitor: Airbnb, Booking.com<br>
+ChatGPT (con web): <span class="presente">SI</span> (2/3) | Punteggio: 4.7/10 (run a assente; run b 4a/4 con motivazione; run c 5a/5 con motivazione) | Risorse concorrenti: Airbnb, Booking.com, Vrbo, Emilia-Romagna Turismo, CaseVacanza.it</p>
+<p><strong>#3 | Migliori appartamenti vacanze nelle colline romagnole?</strong><br>
+Perplexity: <span class="presente">SI</span> (3/3) | Punteggio: 5.7/10 | Competitor: Agriresort Podere del Germano Reale, Agriturismo Case Nuove, Country House I Quattro Passeri, Agriturismo Freelandia, Agricola Casa Cucina Bottega, Agriturismo I Bosconi<br>
+Gemini: <span class="presente">SI</span> (2/3) | Punteggio: 4.7/10 | Competitor: Airbnb, Agriresort Podere del Germano Reale, Agriturismo Case Nuove, Dimora Storica Cà Bianca, Agriturismo Cantina Fiammetta, Cozycozy<br>
+ChatGPT (con web): <span class="presente">SI</span> (3/3) | Punteggio: 8.3/10 (run a 3a/3 con motivazione; run b 1a/3 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Booking.com, Airbnb, Emilia-Romagna Turismo</p>
+<p><strong>#4 | Posto ideale per affittare in Romagna vicino al mare?</strong><br>
+Perplexity: <span class="presente">SI</span> (2/3) | Punteggio: 6.7/10 | Competitor: Country House I Quattro Passeri, Agriturismo Case Nuove, Agriturismo Podere del Germano Reale, Casale del Fattore, Bed &amp; Breakfast Porta Santi, Hotel Romagna<br>
+Gemini: <span class="presente">SI</span> (2/3) | Punteggio: 2/10 | Competitor: Subito.it, Airbnb, Jolly Vacanze, Romagna Case Vacanze, Agenzia Adriatica, Affitti Brevi Italia Rimini<br>
+ChatGPT (con web): <span class="presente">SI</span> (2/3) | Punteggio: 5.0/10 (run a assente; run b 3a/3 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Booking.com, Airbnb, Vrbo, Emilia-Romagna Turismo</p>
+<p><strong>#5 | Affitto breve vicino a Rimini con vista mare?</strong><br>
+Perplexity: <span class="assente">NO</span> (0/3) | Punteggio: 0/10 | Competitor: Casa.it, Idealista, Booking.com, Agriresort Podere del Germano Reale, Agriturismo Freelandia, Dimora Storica Cà Bianca<br>
+Gemini: <span class="presente">SI</span> (2/3) | Punteggio: 3.3/10 | Competitor: Airbnb, Booking.com, HomeToGo, Subito.it, Casa.it, CaseVacanza.it<br>
+ChatGPT (con web): <span class="presente">SI</span> (2/3) | Punteggio: 5.3/10 (run a assente; run b 2a/2 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Booking.com, Vrbo, Airbnb</p>
+<p><strong>#6 | Come trovare un affitto breve in Romagna per famiglie?</strong><br>
+Perplexity: <span class="presente">SI</span> (3/3) | Punteggio: 10/10 | Competitor: Airbnb, Vrbo, Holidu, Resido, Wimdu, Expedia<br>
+Gemini: <span class="assente">NO</span> (0/3) | Punteggio: 0/10 | Competitor: Booking.com, CaseVacanza.it, Airbnb, Vrbo, Agriturismo.it, Homelidays<br>
+ChatGPT (con web): <span class="presente">SI</span> (3/3) | Punteggio: 7.3/10 (run a 4a/4 con motivazione; run b 3a/3 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Booking.com, Airbnb, Vrbo, Emilia-Romagna Turismo</p>
+<p><strong>#7 | Affitti brevi con cucina in Romagna per una settimana?</strong><br>
+Perplexity: <span class="presente">SI</span> (3/3) | Punteggio: 10/10 | Competitor: Agriturismo Le Essenze, Agricola Casa Cucina Bottega, Holidu, Likibu, Vrbo, Cozycozy<br>
+Gemini: <span class="presente">SI</span> (1/3) | Punteggio: 3.3/10 | Competitor: Airbnb, Booking.com, Casamundo, CaseVacanza.it, Cozycozy, FormulaVino<br>
+ChatGPT (con web): <span class="presente">SI</span> (3/3) | Punteggio: 7.7/10 (run a 4a/4 con motivazione; run b 2a/3 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Booking.com, Airbnb, Vrbo, Emilia-Romagna Turismo, CaseVacanza.it</p>
+<p><strong>#8 | Case vacanze Romagna con animali ammessi?</strong><br>
+Perplexity: <span class="assente">NO</span> (0/3) | Punteggio: 0/10 | Competitor: Agriresort Podere del Germano Reale, L'antico Mulino Sul Fiume Casa Vacanze, VRBO, Alberghi.it, Colle Gelso B&amp;B Cesena, Country House I Quattro Passeri<br>
+Gemini: <span class="assente">NO</span> (0/3) | Punteggio: 0/10 | Competitor: Agriturismo Freelandia, Casa Vacanze Sant'Apollinare, Agriturismo Cantina Fiammetta, Dogwelcome, Romagna Case Vacanze, CaseVacanza.it<br>
+ChatGPT (con web): <span class="presente">SI</span> (2/3) | Punteggio: 3.7/10 (run a assente; run b 3a/3 citata; run c 5a/5 con motivazione) | Risorse concorrenti: Vrbo, Booking.com, Airbnb, CaseVacanza.it</p>
+<p><strong>#9 | Appartamenti vacanze Romagna per smart working?</strong><br>
+Perplexity: <span class="presente">SI</span> (3/3) | Punteggio: 10/10 | Competitor: Residence Villa Milena, Casa Calénc, Agriturismo.it, Club Del Sole camping village, Casa Bufalini, Casi Mirò Rooms<br>
+Gemini: <span class="presente">SI</span> (1/3) | Punteggio: 3.3/10 | Competitor: Wimdu, Casamundo, La Spagnera, Hotel Gaston, Hotel Pan di Zenzero, Airbnb<br>
+ChatGPT (con web): <span class="presente">SI</span> (2/3) | Punteggio: 5.7/10 (run a assente; run b 1a/2 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Booking.com, Airbnb, Vrbo, CaseVacanza.it</p>
+<p><strong>#10 | Dove dormire in Romagna vicino a più città?</strong><br>
+Perplexity: <span class="presente">SI</span> (2/3) | Punteggio: 5.3/10 | Competitor: Agriturismo Podere del Germano Reale, IL GIARDINO FIORITO LUXURY GUEST HOUSE B&amp;B, LE ESSENZE, AGRITURISMO I BOSCONI, Agriturismo Free-Landia, Casa Vacanze SantApollinare<br>
+Gemini: <span class="presente">SI</span> (2/3) | Punteggio: 6.7/10 | Competitor: Airbnb, CaseVacanza.it, Cozycozy, Relais Villa Margherita, Borgo Conde Wine Resort, Agriresort Podere del Germano Reale<br>
+ChatGPT (con web): <span class="presente">SI</span> (3/3) | Punteggio: 7.7/10 (run a 4a/4 con motivazione; run b 2a/2 con motivazione; run c 4a/4 con motivazione) | Risorse concorrenti: Airbnb, Booking.com, Emilia-Romagna Turismo, Vrbo</p>
+<hr class="separator">
+<h2>COMPETITOR PRINCIPALI (Perplexity + Gemini)</h2>
+<p><strong>Gruppo Lucea Collection</strong>: 14 apparizioni (Perplexity: 7, Gemini: 7)<br>
+1. Airbnb: 11 apparizioni (Perplexity: 2, Gemini: 9)<br>
+2. Booking.com: 6 apparizioni (Perplexity: 1, Gemini: 5)<br>
+3. CaseVacanza.it: 6 apparizioni (Perplexity: 0, Gemini: 6)<br>
+4. Agriresort Podere del Germano Reale: 5 apparizioni (Perplexity: 3, Gemini: 2)<br>
+5. Country House I Quattro Passeri: 5 apparizioni (Perplexity: 4, Gemini: 1)<br>
+6. Cozycozy: 4 apparizioni (Perplexity: 1, Gemini: 3)<br>
+7. Holidu: 4 apparizioni (Perplexity: 3, Gemini: 1)<br>
+8. Vrbo: 4 apparizioni (Perplexity: 3, Gemini: 1)</p>
+<hr class="separator">
+<h2>SINTESI E PATTERN</h2>
+<p>Il gruppo Lucea Collection performa meglio su domande tematiche specifiche come famiglie, smart working e affitti con cucina, dove Perplexity assegna punteggi massimi (10/10). Le domande piu&#x27; critiche sono la numero 2 (tra Cesena e Rimini) e la numero 8 (animali ammessi), dove il gruppo e&#x27; completamente assente su entrambi i motori. Perplexity mostra una visibilita&#x27; piu&#x27; alta e costante rispetto a Gemini, che tende a preferire grandi piattaforme generaliste come Airbnb, Booking.com e CaseVacanza.it. I competitor locali come Country House I Quattro Passeri e Agriresort Podere del Germano Reale appaiono con frequenza su Perplexity, suggerendo che questo motore privilegia strutture specifiche del territorio rispetto agli aggregatori. ChatGPT con ricerca web (3 run manuali) cita il gruppo in tutte le 10 domande (24 risposte su 30) con media 6.2 e lo consiglia con motivazione specifica in 9 domande, ma quasi sempre dopo Airbnb, Booking.com e Vrbo: e&#x27; una risorsa locale consigliata in aggiunta ai grandi portali, raramente come prima scelta. La run a e&#x27; la piu&#x27; debole (assente su 5 domande su 10: Cesena-Rimini, mare, vista mare, animali, smart working).</p>
+<hr class="separator">
+<h2>LE 3 AZIONI PRIORITARIE</h2>
+<p>1. Creare contenuti ottimizzati per le query geografiche piu' specifiche, in particolare "tra Cesena e Rimini" e "vicino a Rimini con vista mare", dove il gruppo e' assente o debole, lavorando su pagine dedicate con riferimenti espliciti a queste aree.</p>
+<p>2. Sviluppare contenuti chiari sulla policy animali ammessi per colmare l'assenza totale sulla domanda 8, dato che diversi competitor locali e aggregatori gia' presidiano questa nicchia su entrambi i motori.</p>
+<p>3. Per migliorare la visibilita' su Gemini, aumentare la presenza su directory e piattaforme che questo motore cita frequentemente (CaseVacanza.it, Cozycozy, Holidu), attraverso schede struttura aggiornate e ottimizzate.</p>
+</div>
+<div class="footer">
+  <p>Romagna Affitti Brevi: sistema di monitoraggio GEO/AEO &nbsp;|&nbsp; romagna-affitti-brevi.it</p>
+</div>
+<script type="application/json" id="dati-dashboard">
+{
+  "data": "26/09/2026",
+  "data_iso": "2026-09-26",
+  "metodologia": "v3.5",
+  "presenze": 10,
+  "punteggio_medio": 5.0,
+  "perplexity_presenze": 7,
+  "perplexity_media": 5.8,
+  "gemini_presenze": 7,
+  "gemini_media": 3,
+  "domande": [
+    {
+      "domanda": "Dove trovare affitti brevi di qualità in Romagna?",
+      "presente": true,
+      "punteggio": 8.4,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 10,
+        "presenze": "3/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 6.7,
+        "presenze": "2/3"
+      },
+      "competitor": [
+        "Agriturismo Carlini",
+        "Agriturismo.net",
+        "FormulaVino",
+        "Agriturismo Emilia-Romagna",
+        "Idealista",
+        "Country House I Quattro Passeri",
+        "Airbnb",
+        "Booking.com",
+        "Affitti Brevi Italia RIMINI",
+        "CaseVacanza.it",
+        "Holidu"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 7.0,
+        "presenze": "3/3",
+        "competitor": [
+          "Booking.com",
+          "Airbnb",
+          "Emilia-Romagna Turismo",
+          "Vrbo"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "4a/5",
+            "esito": "con motivazione",
+            "punteggio": 7
+          },
+          {
+            "run": "b",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          },
+          {
+            "run": "c",
+            "posizione": "5a/5",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Dove affittare una casa vacanze tra Cesena e Rimini?",
+      "presente": false,
+      "punteggio": 0,
+      "perplexity": {
+        "presente": false,
+        "punteggio": 0,
+        "presenze": "0/3"
+      },
+      "gemini": {
+        "presente": false,
+        "punteggio": 0,
+        "presenze": "0/3"
+      },
+      "competitor": [
+        "Holidu",
+        "Alberghi.it",
+        "Casamundo",
+        "Likibu",
+        "Bluepillow",
+        "Airbnb",
+        "Booking.com"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 4.7,
+        "presenze": "2/3",
+        "competitor": [
+          "Airbnb",
+          "Booking.com",
+          "Vrbo",
+          "Emilia-Romagna Turismo",
+          "CaseVacanza.it"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "assente",
+            "esito": "assente",
+            "punteggio": 0
+          },
+          {
+            "run": "b",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          },
+          {
+            "run": "c",
+            "posizione": "5a/5",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Migliori appartamenti vacanze nelle colline romagnole?",
+      "presente": true,
+      "punteggio": 5.2,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 5.7,
+        "presenze": "3/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 4.7,
+        "presenze": "2/3"
+      },
+      "competitor": [
+        "Agriresort Podere del Germano Reale",
+        "Agriturismo Case Nuove",
+        "Country House I Quattro Passeri",
+        "Agriturismo Freelandia",
+        "Agricola Casa Cucina Bottega",
+        "Agriturismo I Bosconi",
+        "Airbnb",
+        "Dimora Storica Cà Bianca",
+        "Agriturismo Cantina Fiammetta",
+        "Cozycozy"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 8.3,
+        "presenze": "3/3",
+        "competitor": [
+          "Booking.com",
+          "Airbnb",
+          "Emilia-Romagna Turismo"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "3a/3",
+            "esito": "con motivazione",
+            "punteggio": 8
+          },
+          {
+            "run": "b",
+            "posizione": "1a/3",
+            "esito": "con motivazione",
+            "punteggio": 10
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Posto ideale per affittare in Romagna vicino al mare?",
+      "presente": true,
+      "punteggio": 4.4,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 6.7,
+        "presenze": "2/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 2,
+        "presenze": "2/3"
+      },
+      "competitor": [
+        "Country House I Quattro Passeri",
+        "Agriturismo Case Nuove",
+        "Agriturismo Podere del Germano Reale",
+        "Casale del Fattore",
+        "Bed & Breakfast Porta Santi",
+        "Hotel Romagna",
+        "Subito.it",
+        "Airbnb",
+        "Jolly Vacanze",
+        "Romagna Case Vacanze",
+        "Agenzia Adriatica",
+        "Affitti Brevi Italia Rimini"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 5.0,
+        "presenze": "2/3",
+        "competitor": [
+          "Booking.com",
+          "Airbnb",
+          "Vrbo",
+          "Emilia-Romagna Turismo"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "assente",
+            "esito": "assente",
+            "punteggio": 0
+          },
+          {
+            "run": "b",
+            "posizione": "3a/3",
+            "esito": "con motivazione",
+            "punteggio": 8
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Affitto breve vicino a Rimini con vista mare?",
+      "presente": true,
+      "punteggio": 1.7,
+      "perplexity": {
+        "presente": false,
+        "punteggio": 0,
+        "presenze": "0/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 3.3,
+        "presenze": "2/3"
+      },
+      "competitor": [
+        "Casa.it",
+        "Idealista",
+        "Booking.com",
+        "Agriresort Podere del Germano Reale",
+        "Agriturismo Freelandia",
+        "Dimora Storica Cà Bianca",
+        "Airbnb",
+        "HomeToGo",
+        "Subito.it",
+        "CaseVacanza.it"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 5.3,
+        "presenze": "2/3",
+        "competitor": [
+          "Booking.com",
+          "Vrbo",
+          "Airbnb"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "assente",
+            "esito": "assente",
+            "punteggio": 0
+          },
+          {
+            "run": "b",
+            "posizione": "2a/2",
+            "esito": "con motivazione",
+            "punteggio": 9
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Come trovare un affitto breve in Romagna per famiglie?",
+      "presente": true,
+      "punteggio": 5,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 10,
+        "presenze": "3/3"
+      },
+      "gemini": {
+        "presente": false,
+        "punteggio": 0,
+        "presenze": "0/3"
+      },
+      "competitor": [
+        "Airbnb",
+        "Vrbo",
+        "Holidu",
+        "Resido",
+        "Wimdu",
+        "Expedia",
+        "Booking.com",
+        "CaseVacanza.it",
+        "Agriturismo.it",
+        "Homelidays"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 7.3,
+        "presenze": "3/3",
+        "competitor": [
+          "Booking.com",
+          "Airbnb",
+          "Vrbo",
+          "Emilia-Romagna Turismo"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          },
+          {
+            "run": "b",
+            "posizione": "3a/3",
+            "esito": "con motivazione",
+            "punteggio": 8
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Affitti brevi con cucina in Romagna per una settimana?",
+      "presente": true,
+      "punteggio": 6.7,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 10,
+        "presenze": "3/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 3.3,
+        "presenze": "1/3"
+      },
+      "competitor": [
+        "Agriturismo Le Essenze",
+        "Agricola Casa Cucina Bottega",
+        "Holidu",
+        "Likibu",
+        "Vrbo",
+        "Cozycozy",
+        "Airbnb",
+        "Booking.com",
+        "Casamundo",
+        "CaseVacanza.it",
+        "FormulaVino"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 7.7,
+        "presenze": "3/3",
+        "competitor": [
+          "Booking.com",
+          "Airbnb",
+          "Vrbo",
+          "Emilia-Romagna Turismo",
+          "CaseVacanza.it"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          },
+          {
+            "run": "b",
+            "posizione": "2a/3",
+            "esito": "con motivazione",
+            "punteggio": 9
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Case vacanze Romagna con animali ammessi?",
+      "presente": false,
+      "punteggio": 0,
+      "perplexity": {
+        "presente": false,
+        "punteggio": 0,
+        "presenze": "0/3"
+      },
+      "gemini": {
+        "presente": false,
+        "punteggio": 0,
+        "presenze": "0/3"
+      },
+      "competitor": [
+        "Agriresort Podere del Germano Reale",
+        "L'antico Mulino Sul Fiume Casa Vacanze",
+        "VRBO",
+        "Alberghi.it",
+        "Colle Gelso B&B Cesena",
+        "Country House I Quattro Passeri",
+        "Agriturismo Freelandia",
+        "Casa Vacanze Sant'Apollinare",
+        "Agriturismo Cantina Fiammetta",
+        "Dogwelcome",
+        "Romagna Case Vacanze",
+        "CaseVacanza.it"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": false,
+        "punteggio": 3.7,
+        "presenze": "2/3",
+        "competitor": [
+          "Vrbo",
+          "Booking.com",
+          "Airbnb",
+          "CaseVacanza.it"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "assente",
+            "esito": "assente",
+            "punteggio": 0
+          },
+          {
+            "run": "b",
+            "posizione": "3a/3",
+            "esito": "citata",
+            "punteggio": 4
+          },
+          {
+            "run": "c",
+            "posizione": "5a/5",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Appartamenti vacanze Romagna per smart working?",
+      "presente": true,
+      "punteggio": 6.7,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 10,
+        "presenze": "3/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 3.3,
+        "presenze": "1/3"
+      },
+      "competitor": [
+        "Residence Villa Milena",
+        "Casa Calénc",
+        "Agriturismo.it",
+        "Club Del Sole camping village",
+        "Casa Bufalini",
+        "Casi Mirò Rooms",
+        "Wimdu",
+        "Casamundo",
+        "La Spagnera",
+        "Hotel Gaston",
+        "Hotel Pan di Zenzero",
+        "Airbnb"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 5.7,
+        "presenze": "2/3",
+        "competitor": [
+          "Booking.com",
+          "Airbnb",
+          "Vrbo",
+          "CaseVacanza.it"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "assente",
+            "esito": "assente",
+            "punteggio": 0
+          },
+          {
+            "run": "b",
+            "posizione": "1a/2",
+            "esito": "con motivazione",
+            "punteggio": 10
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    },
+    {
+      "domanda": "Dove dormire in Romagna vicino a più città?",
+      "presente": true,
+      "punteggio": 6,
+      "perplexity": {
+        "presente": true,
+        "punteggio": 5.3,
+        "presenze": "2/3"
+      },
+      "gemini": {
+        "presente": true,
+        "punteggio": 6.7,
+        "presenze": "2/3"
+      },
+      "competitor": [
+        "Agriturismo Podere del Germano Reale",
+        "IL GIARDINO FIORITO LUXURY GUEST HOUSE B&B",
+        "LE ESSENZE",
+        "AGRITURISMO I BOSCONI",
+        "Agriturismo Free-Landia",
+        "Casa Vacanze SantApollinare",
+        "Airbnb",
+        "CaseVacanza.it",
+        "Cozycozy",
+        "Relais Villa Margherita",
+        "Borgo Conde Wine Resort",
+        "Agriresort Podere del Germano Reale"
+      ],
+      "chatgpt": {
+        "presente": true,
+        "consigliata": true,
+        "punteggio": 7.7,
+        "presenze": "3/3",
+        "competitor": [
+          "Airbnb",
+          "Booking.com",
+          "Emilia-Romagna Turismo",
+          "Vrbo"
+        ],
+        "run": [
+          {
+            "run": "a",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          },
+          {
+            "run": "b",
+            "posizione": "2a/2",
+            "esito": "con motivazione",
+            "punteggio": 9
+          },
+          {
+            "run": "c",
+            "posizione": "4a/4",
+            "esito": "con motivazione",
+            "punteggio": 7
+          }
+        ]
+      }
+    }
+  ],
+  "competitor_top": [
+    {
+      "nome": "Airbnb",
+      "totale": 21,
+      "perplexity": 2,
+      "gemini": 9,
+      "chatgpt": 10
+    },
+    {
+      "nome": "Booking.com",
+      "totale": 16,
+      "perplexity": 1,
+      "gemini": 5,
+      "chatgpt": 10
+    },
+    {
+      "nome": "Vrbo",
+      "totale": 13,
+      "perplexity": 3,
+      "gemini": 1,
+      "chatgpt": 9
+    },
+    {
+      "nome": "CaseVacanza.it",
+      "totale": 10,
+      "perplexity": 0,
+      "gemini": 6,
+      "chatgpt": 4
+    },
+    {
+      "nome": "Emilia-Romagna Turismo",
+      "totale": 7,
+      "perplexity": 0,
+      "gemini": 0,
+      "chatgpt": 7
+    },
+    {
+      "nome": "Agriresort Podere del Germano Reale",
+      "totale": 5,
+      "perplexity": 3,
+      "gemini": 2,
+      "chatgpt": 0
+    },
+    {
+      "nome": "Country House I Quattro Passeri",
+      "totale": 5,
+      "perplexity": 4,
+      "gemini": 1,
+      "chatgpt": 0
+    },
+    {
+      "nome": "Cozycozy",
+      "totale": 4,
+      "perplexity": 1,
+      "gemini": 3,
+      "chatgpt": 0
+    },
+    {
+      "nome": "Holidu",
+      "totale": 4,
+      "perplexity": 3,
+      "gemini": 1,
+      "chatgpt": 0
+    },
+    {
+      "nome": "Agriturismo Case Nuove",
+      "totale": 3,
+      "perplexity": 2,
+      "gemini": 1,
+      "chatgpt": 0
+    }
+  ],
+  "sintesi": "Il gruppo Lucea Collection performa meglio su domande tematiche specifiche come famiglie, smart working e affitti con cucina, dove Perplexity assegna punteggi massimi (10/10). Le domande piu' critiche sono la numero 2 (tra Cesena e Rimini) e la numero 8 (animali ammessi), dove il gruppo e' completamente assente su entrambi i motori. Perplexity mostra una visibilita' piu' alta e costante rispetto a Gemini, che tende a preferire grandi piattaforme generaliste come Airbnb, Booking.com e CaseVacanza.it. I competitor locali come Country House I Quattro Passeri e Agriresort Podere del Germano Reale appaiono con frequenza su Perplexity, suggerendo che questo motore privilegia strutture specifiche del territorio rispetto agli aggregatori. ChatGPT con ricerca web (3 run manuali) cita il gruppo in tutte le 10 domande (24 risposte su 30) con media 6.2 e lo consiglia con motivazione specifica in 9 domande, ma quasi sempre dopo Airbnb, Booking.com e Vrbo: e' una risorsa locale consigliata in aggiunta ai grandi portali, raramente come prima scelta. La run a e' la piu' debole (assente su 5 domande su 10: Cesena-Rimini, mare, vista mare, animali, smart working).",
+  "azioni": [
+    "Creare contenuti ottimizzati per le query geografiche piu' specifiche, in particolare \"tra Cesena e Rimini\" e \"vicino a Rimini con vista mare\", dove il gruppo e' assente o debole, lavorando su pagine dedicate con riferimenti espliciti a queste aree.",
+    "Sviluppare contenuti chiari sulla policy animali ammessi per colmare l'assenza totale sulla domanda 8, dato che diversi competitor locali e aggregatori gia' presidiano questa nicchia su entrambi i motori.",
+    "Per migliorare la visibilita' su Gemini, aumentare la presenza su directory e piattaforme che questo motore cita frequentemente (CaseVacanza.it, Cozycozy, Holidu), attraverso schede struttura aggiornate e ottimizzate."
+  ],
+  "report_url": "reports/report-geo-aeo-rab-2026-09-26-completo.html",
+  "chatgpt_presenze": 10,
+  "chatgpt_media": 6.2,
+  "nota": "Metodo v3.5 (workflow N8N RAB v1.3, dal 26/09/2026): 3 campioni per motore e domanda, campioni con errore tecnico esclusi, presenza verificata con controllo testuale sui nomi del gruppo Lucea Collection, presente = SI se il gruppo compare in almeno 1 campione valido su 3 (piu' nomi nella stessa risposta contano come una sola presenza). Punteggio per campione calcolato in codice: non citato 0, citato in elenco 3, con motivazione specifica 7, bonus posizione 1a +3, 2a +2, 3a +1; punteggio della domanda = media dei campioni validi. Le posizioni contano anche portali e directory (Airbnb, Booking.com, Vrbo e simili), perche' sono i concorrenti diretti di una directory. La scala non e' confrontabile con i report fino al 24/09: il trend riparte da qui. ChatGPT: benchmark manuale del 26/09, stesse 10 domande, 3 run da chat nuova e vuota, solo risultati con ricerca web (senza web: 0/30), stessa scala e stesse regole; consigliata = SI se con motivazione specifica in almeno 2 run su 3. Posizioni ricavate dall'ordine di citazione nel testo delle risposte (il prompt v1 chiedeva la posizione solo in presenza di una classifica esplicita, quindi riportava sempre 'Non classificata'). Emilia-Romagna Turismo contato come risorsa perche' elenca alloggi filtrabili. Casi limite: run a #9 cita casa-cavour.com solo come fonte del link, non nel testo, quindi conta come assenza; run b #8 'directory locale da controllare' conta come citazione senza motivazione."
+}
+</script>
+</body>
+</html>
